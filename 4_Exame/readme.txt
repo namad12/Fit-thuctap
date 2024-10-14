@@ -1,0 +1,1 @@
+Sau khi hoàn thành xong hết các tài liệu .Net và Oracle thì sẽ có các bài kiểm tra đánh giá.
