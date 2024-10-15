@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Đăng Ký</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        form {
+            padding: 25px 60px;
+            width: 500px;
+            margin: 0 auto;
+            border: 1px solid;
+            box-sizing: border-box;
+        }
+        
+        label {
+            display: inline-block;
+            width: 100px;
+            margin-bottom: 10px;
+        }
+        .error{
+            color: red;
+        }
+    </style>
+
+    <script>
+        function Validate(){
+            var userId = document.getElementById('userid').value;
+            var password = document.getElementById('password').value;
+            var name = document.getElementById('name').value;
+            var address = document.getElementById('address').value;
+            var country = document.getElementById('country').value;
+            var zipCode = document.getElementById('zipcode').value;
+            var email = document.getElementById('email').value;
+            var sex = document.querySelector('input[name="sex"]:checked')?.value;
+            var language = document.querySelector('input[name="language"]:checked')?.value;
+            var about = document.getElementById('about').value;
+
+            document.getElementById('checkS').textContent = sex ? '' : 'Please select your sex';
+            document.getElementById('checkL').textContent = language ? '' : 'Please select a language';
+            console.log(document.getElementById('checkID'));
+            if(userId=='' || password=='' ||name =='' || zipCode =='' || email=='' || sex=='' || language==''){
+                alert('Vui long nhap day du thong tin cân thiêt')
+            }
+            if(userId.length<5 && userId.length>12){
+                document.getElementById('checkID').textContent='Required and must be of length 5 to 12';
+            }
+            else{
+                document.getElementById('checkID').textContent='';
+            }
+            if(password.length<5 && password.length>12){
+                document.getElementById('checkPW').textContent='Required and must be of length 5 to 12';
+            }
+            else{
+                document.getElementById('checkPW').textContent='';
+            }
+
+            var nameRegex = /^[A-Za-z]+$/; 
+            if (!nameRegex.test(name)) {
+                document.getElementById('checkN').textContent = 'Required and alphabates only ';
+            } else {
+                document.getElementById('checkN').textContent = ''; 
+            }
+
+            var zipCodeRegex = /^[0-9]+$/; 
+            if (!zipCodeRegex.test(zipCode)) {
+                document.getElementById('checkZc').textContent = 'Required,Must be nemberic only ';
+            } else {
+                document.getElementById('checkZc').textContent = ''; 
+            }
+
+            var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; 
+
+            if (!emailRegex.test(email)) {
+                document.getElementById('checkE').textContent = 'Please enter a valid email address';
+            } else {
+                document.getElementById('checkE').textContent = ''; 
+            }
+
+        }
+    </script>
+</head>
+<body>
+    
+    <form>
+        <h1>Form Đăng Ký</h1>
+        <label for="userid">User ID:</label>
+        <input type="text" id="userid" name="userid">
+        <div class="error" id="checkID"></div>
+        <br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <div class="error" id="checkPW"></div>
+        <br> 
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <div class="error" id="checkN"></div>
+        <br>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address">
+        <div class="error" id="checkAdr"></div>
+        <br> 
+
+
+        <label for="country">Country:</label>
+        <select id="country" name="country">
+            <option value="vietnam">Vietnam</option> 
+            <option value="usa">USA</option>
+        </select>
+        <div class="error" id="checkCt"></div>
+        <br>
+
+        <label for="zipcode">ZIP Code:</label>
+        <input type="text" id="zipcode" name="zipcode">
+        <div class="error" id="checkZc"></div>
+        <br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <div class="error" id="checkE"></div>
+        <br>
+
+        <label>Sex:</label>  
+        <input type="radio" name="sex" value="male"> Male
+        <input type="radio" name="sex" value="female"> Female
+        <div class="error" id="checkS"></div>
+        <br>
+
+        <label>Language:</label>   
+        <input type="radio" name="language" value="english"> English
+        <input type="radio" name="language" value="nonenglish"> Non-English
+        <div class="error" id="checkL"></div>
+        <br>
+
+        <label for="about">About:</label><br>
+        <textarea id="about" name="about" rows="4" cols="50"></textarea><br>
+
+        <button type="button" onclick="Validate()">Submit</button>  
+
+    </form>
+</body>
+</html>

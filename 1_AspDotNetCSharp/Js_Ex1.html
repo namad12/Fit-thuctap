@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm Tra số nguyên tố</title>
+    
+</head>
+<body>
+
+<div class="prime-checker">
+    <h2>Kiểm Tra số nguyên tố</h2>
+    <input type="number" id="numberInput" placeholder="Nhập một số tự nhiên">
+    <button onclick="checkPrime()">In kết quả</button>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function isPrime(n) {
+        if (n <= 1) return false; // Số <= 1 không phải số nguyên tố
+        for (let i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i === 0) return false;
+        }
+        return true;
+    }
+
+    function checkPrime() {
+        const numberInput = document.getElementById('numberInput');
+        const result = document.getElementById('result');
+
+        if (!numberInput || numberInput < 0 || !Number.isInteger(parseFloat(numberInput.value))) {
+            result.innerText = "Vui lòng nhập một số tự nhiên!";
+            return;
+        }
+
+        const n = parseInt(numberInput.value);
+
+        if (isPrime(n)) {
+            result.innerText = n + " là số nguyên tố!";
+        } else {
+            result.innerText = n + " không phải số nguyên tố!";
+        }
+        numberInput.value='';
+    }
+</script>
