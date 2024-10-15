@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EzFuture</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu {
+            list-style-type: none;
+            display: flex;
+            gap: 2px;
+        }
+
+        .menu > li {
+            position: relative;
+        }
+
+        .menu > li > a {
+            height: 60px;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #f58220;
+            color: white;
+            display: block;
+        }
+
+        .submenu {
+            position: absolute;
+            display: none;
+            top: 100%;
+            left: 0;
+            background-color: #cc6600;
+            list-style-type: none;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); 
+            z-index: 1;
+        }
+
+        .submenu li a {
+            padding: 10px;
+            display: block;
+            background-color: #cc6600;
+            color: white;
+            text-decoration: none;
+            width: 240px;
+            height: 40px; 
+            
+        }
+
+        .menu li:hover > .submenu {
+            display: block;
+        }
+
+        .menu li:hover > a {
+            background-color: #cc6600; 
+            
+        }
+
+        .submenu li a:hover {
+            background-color:  #f58220; 
+            
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+
+                <img src="" alt="FPT Securities">
+            </div>
+            <nav>
+                <ul class="menu">
+                    <li><a href="#">Tham số</a></li>
+                    <li><a href="#">Giao dịch</a></li>
+                    <li><a href="#">Transfer</a></li>
+                    <li><a href="#">Tra cứu</a></li>
+                    <li><a href="#">Phí VSD</a>
+                        <ul class="submenu">
+                            <li><a href="#">Phí giao dịch QUVT</a></li>
+                            <li><a href="#">Phí giao dịch QUVT tổng hợp</a></li>
+                            <li><a href="#">Phí giao dịch QUVT chờ xét</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Cuối ngày</a></li>
+                    <li><a href="#">VSD Gateway</a></li>
+                    <li><a href="#">Tiền khách</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>
