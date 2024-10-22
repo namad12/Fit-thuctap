@@ -103,6 +103,14 @@
     <Content Include="Chuong5\Ex1_datepicker.ascx" />
     <Content Include="Chuong5\Ex1_Hone.aspx" />
     <Content Include="Chuong5\Ex2.aspx" />
+    <Content Include="Chuong6\Ex1\Ex1_About.aspx" />
+    <Content Include="Chuong6\Ex1\Ex1_Contacts.aspx" />
+    <Content Include="Chuong6\Ex1\Ex1_Home.aspx" />
+    <Content Include="Chuong6\Ex2\Ex2_Admin.aspx" />
+    <Content Include="Chuong6\Ex2\Ex2_Home.aspx" />
+    <Content Include="Chuong6\Ex2\Ex2_UserArea.aspx" />
+    <Content Include="Chuong6\Ex2\img\Admin.png" />
+    <Content Include="Chuong6\Ex2\img\UsersArea.png" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -152,6 +160,8 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Chuong6\Ex1\Ex1_PageM.Master" />
+    <Content Include="Chuong6\Ex2\Ex2_PageM.Master" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -215,6 +225,62 @@
     </Compile>
     <Compile Include="Chuong5\Ex2.aspx.designer.cs">
       <DependentUpon>Ex2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Chuong6\Ex1\Ex1_About.aspx.cs">
+      <DependentUpon>Ex1_About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chuong6\Ex1\Ex1_About.aspx.designer.cs">
+      <DependentUpon>Ex1_About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Chuong6\Ex1\Ex1_Contacts.aspx.cs">
+      <DependentUpon>Ex1_Contacts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chuong6\Ex1\Ex1_Contacts.aspx.designer.cs">
+      <DependentUpon>Ex1_Contacts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Chuong6\Ex1\Ex1_Home.aspx.cs">
+      <DependentUpon>Ex1_Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chuong6\Ex1\Ex1_Home.aspx.designer.cs">
+      <DependentUpon>Ex1_Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Chuong6\Ex1\Ex1_PageM.Master.cs">
+      <DependentUpon>Ex1_PageM.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chuong6\Ex1\Ex1_PageM.Master.designer.cs">
+      <DependentUpon>Ex1_PageM.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Chuong6\Ex2\Ex2_Admin.aspx.cs">
+      <DependentUpon>Ex2_Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chuong6\Ex2\Ex2_Admin.aspx.designer.cs">
+      <DependentUpon>Ex2_Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Chuong6\Ex2\Ex2_Home.aspx.cs">
+      <DependentUpon>Ex2_Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chuong6\Ex2\Ex2_Home.aspx.designer.cs">
+      <DependentUpon>Ex2_Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Chuong6\Ex2\Ex2_PageM.Master.cs">
+      <DependentUpon>Ex2_PageM.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chuong6\Ex2\Ex2_PageM.Master.designer.cs">
+      <DependentUpon>Ex2_PageM.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Chuong6\Ex2\Ex2_UserArea.aspx.cs">
+      <DependentUpon>Ex2_UserArea.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Chuong6\Ex2\Ex2_UserArea.aspx.designer.cs">
+      <DependentUpon>Ex2_UserArea.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>

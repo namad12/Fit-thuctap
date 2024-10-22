@@ -1,0 +1,68 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Ex1_PageM.master.cs" Inherits="Phu_NET.Chuong6.Ex1_PageM" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title><%: Page.Title %></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        header{
+            text-align:center;
+            background-color:darkgrey;
+        }
+        .body-content{
+            display:flex;
+        }
+        .navbar{
+            background-color:aquamarine;
+            width:15%;
+            margin-right:15px;
+        }
+        #MainContentEx1{
+            padding-left:25px;
+            width:75%;
+        }
+        footer{
+            text-align:center;
+            background-color:darkgrey;
+        }
+        h3{
+            margin:0px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header>
+            <h3>I am the Master Page</h3>
+        </header>
+
+        <div class="body-content" >
+            <nav class="navbar" >
+                <h2>Menu</h2>
+                <ul>
+                    <il ><a class="nav-link" runat="server" href="Ex1_Home.aspx">Home</a></il>
+                    <li><a class="nav-link" runat="server" href="Ex1_About.aspx">About</a></li>
+                    <li>
+                        <a class="nav-link" runat="server" href="Ex1_Contacts.aspx">Contact</a>
+                        <ul>
+                            <li> <a class="nav-link" runat="server" href="~/">India</a></li>
+                            <li><a class="nav-link" runat="server" href="~/">Bulgaria</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <asp:ContentPlaceHolder ID="MainContentEx1" runat="server" >
+            </asp:ContentPlaceHolder>
+    
+   
+        </div>
+         <footer>
+             <h3>&copy; <%: DateTime.Now.Year %> by Yoda Corp</h3>
+         </footer>
+    </form>
+</body>
+</html>

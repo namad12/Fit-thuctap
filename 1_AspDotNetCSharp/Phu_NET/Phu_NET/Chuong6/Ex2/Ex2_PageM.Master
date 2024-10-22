@@ -1,0 +1,41 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Ex2_PageM.master.cs" Inherits="Phu_NET.Chuong6.Ex2.Ex2_PageM" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <style>
+        .header{
+            text-align:center;
+            background-color:darkgrey;
+        }
+        .footer{
+            text-align:center;
+            background-color:darkgrey;
+        }
+        h3{
+            margin:3px;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        
+        <div class="header">
+            <h3>FPT Software Academy - Community Web Site</h3>
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="footer">
+            <h3>&copy; <%: DateTime.Now.Year %> - FPT Software Academy</h3>
+        </div>
+    </form>
+</body>
+</html>
