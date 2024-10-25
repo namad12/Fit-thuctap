@@ -15,6 +15,9 @@
             <label>Date: </label>
             <uc1:Ex1_datepicker runat="server" id="datepicker" />
         </div>
+        <div>
+            <h2>OK</h2>
+        </div>
     </form>
 </body>
 </html>
