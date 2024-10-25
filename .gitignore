@@ -3,3 +3,6 @@
 ################################################################################
 
 /.vs
+*.cache
+*.cs
+/1_AspDotNetCSharp/Phu_NET/Phu_NET/obj/Debug/Phu_NET.csproj.AssemblyReference.cache
