@@ -36,14 +36,14 @@
 <body>
     <form id="form1" runat="server">
         <header>
-            <h3>I am the Master Page</h3>
+            <h3>I am the Master Page -> OK</h3>
         </header>
 
         <div class="body-content" >
             <nav class="navbar" >
                 <h2>Menu</h2>
                 <ul>
-                    <il ><a class="nav-link" runat="server" href="Ex1_Home.aspx">Home</a></il>
+                    <li><a class="nav-link" runat="server" href="Ex1_Home.aspx">Home</a></li>
                     <li><a class="nav-link" runat="server" href="Ex1_About.aspx">About</a></li>
                     <li>
                         <a class="nav-link" runat="server" href="Ex1_Contacts.aspx">Contact</a>

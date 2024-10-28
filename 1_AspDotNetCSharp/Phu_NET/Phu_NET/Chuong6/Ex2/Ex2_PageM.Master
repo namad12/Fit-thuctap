@@ -26,7 +26,7 @@
     <form id="form1" runat="server">
         
         <div class="header">
-            <h3>FPT Software Academy - Community Web Site</h3>
+            <h3>FPT Software Academy - Community Web Site -> OK</h3>
         </div>
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
