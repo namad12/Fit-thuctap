@@ -182,8 +182,10 @@ commit;
 -- 
 CREATE OR REPLACE PROCEDURE TinhTongSoTienRut (
   p_makh IN VARCHAR2, 
-  p_tongSoTien OUT NUMBER
-) IS
+  p_tongSoTien OUT NUMBER,
+  p_results OUT SYS.ODCIVARCHAR2LIST
+) 
+IS
   CURSOR cr_tk IS
     SELECT t.maso, t.makh, t.noigi, t.sotien, t.kyhan, t.ngaygui, t.ngayrut,
            t.sotiennhan, v.kyhan AS kyhan_t, v.laisuat_kh
@@ -194,6 +196,7 @@ CREATE OR REPLACE PROCEDURE TinhTongSoTienRut (
   v_soTien NUMBER;
   v_soKyHan NUMBER;
   v_soThangDu NUMBER;
+  
 BEGIN
   p_tongSoTien := 0;
   
@@ -226,9 +229,12 @@ BEGIN
     -- C?ng d?n vào t?ng s? ti?n
     p_tongSoTien := p_tongSoTien + v_soTien;
 
-    DBMS_OUTPUT.PUT_LINE('S? k? h?n: ' || v_soKyHan || ', S? tháng du: ' || v_soThangDu || ', S? ti?n: ' || v_soTien);
+    p_results.EXTEND;
+    p_results(p_results.COUNT) := 'K? h?n: ' || v_soKyHan || ', Tháng du: ' || v_soThangDu || ', S? ti?n: ' || v_soTien;
   END LOOP;
-
+  
+  OPEN p_cursor FOR 
+    SELECT COLUMN_VALUE AS details FROM TABLE(v_results);
 EXCEPTION
   WHEN NO_DATA_FOUND THEN
     DBMS_OUTPUT.PUT_LINE('No data found for customer ' || p_makh);

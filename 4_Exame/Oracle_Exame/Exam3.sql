@@ -19,7 +19,7 @@ SELECT aID, aName, aAge FROM tTablec;
 --b) The value of v_new_locn at position 1 is: Wesrern ?uope - VARCHAR2
 --c) The value of v_weight at position 2 is: 601- NUMBER
 --d) The value of v_message at position 2 is: Product 10012 is in stock - VARCHAR2
---e) The value of v_new_locn at position 2 is: Loi - bien này chi ton tai trong khoi con
+--e) The value of v_new_locn at position 2 is: Loi - bien nay chi ton tai trong khoi con
 
 --5
 CURSOR c_dept IS 
@@ -30,22 +30,21 @@ ORDER BY adepid;
 
 --6
 CREATE OR REPLACE PROCEDURE emp_section (
-    v_aempname IN temployees.aempname%TYPE
+    v_aempname IN temployees.aempname%TYPE,
+    p_cursor OUT SYS_REFCURSOR,
+    p_Message OUT NVARCHAR2
 )
 IS 
-    CURSOR  c_emp IS 
+BEGIN
+    OPEN p_cursor FOR
     SELECT  *
     FROM    temployees 
     WHERE   temployees.aempname=v_aempname;
-BEGIN
-    FOR e IN c_emp
-    LOOP 
-        DBMS_OUTPUT.PUT_LINE('Employee ID: ' || e.aempid || ' Employee Name: ' || e.aempname);
-    END LOOP; 
+    
 EXCEPTION
   WHEN OTHERS THEN
-    DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
-END:
+    p_Message:='Error: ' || SQLERRM;
+END;
 
 --7
 
@@ -62,14 +61,16 @@ BEGIN
     
     INSERT INTO tMessage
     VALUES ('Employee’s name : ' ||v_empname||' Salary: '|| v_salary);
-    
+    COMMIT;
 EXCEPTION
     WHEN NO_DATA_FOUND THEN
         INSERT INTO tMessage
         VALUES ('No employee with salary of  ' || v_salary);
+        COMMIT;
     WHEN TOO_MANY_ROWS THEN
         INSERT INTO tMessage
         VALUES ('More than one employee with a salary of   ' || v_salary);
+        COMMIT;
 END;
 
 --8 
@@ -77,7 +78,8 @@ END;
 --a
 CREATE OR REPLACE PROCEDURE sptregions_i (
     v_id tRegions.aregid%TYPE,
-    v_name tRegions.aregname%TYPE
+    v_name tRegions.aregname%TYPE,
+    p_Message OUT NVARCHAR2
 ) 
 IS 
 BEGIN
@@ -85,7 +87,7 @@ BEGIN
     VALUES (v_id,v_name);
 EXCEPTION
   WHEN OTHERS THEN
-    DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
+    p_Message:='Error: ' || SQLERRM;
 END;
 
 -- b
@@ -97,9 +99,9 @@ BEGIN
     
     IF SQL%ROWCOUNT > 0 THEN
       DBMS_OUTPUT.PUT_LINE('tRegions inserted successfully: ' || v_region_name);
-   ELSE
+    ELSE
       DBMS_OUTPUT.PUT_LINE('Failed');
-   END IF;
+    END IF;
     
 EXCEPTION
     WHEN OTHERS THEN
