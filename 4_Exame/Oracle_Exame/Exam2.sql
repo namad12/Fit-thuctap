@@ -8,8 +8,10 @@ create table KhachHang (
     email       varchar2(30),
     phanloai    varchar2(5)
 );
-after table KhachHang
+alter table KhachHang
 add constraint pk_KhachH_maKH PRIMARY KEY (makh);
+
+--> viết sai câu lệnh (alter table chứ ko phải after table) 
 
 INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH01', 'Trần Văn Tùng', '34 Hàng Bạc - Hoàn Kiếm - Hà Nội', '0913536674', 'tungtv@gmail.com');
 INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH02', 'Nguyễn Thanh Tuấn', '101 Đại Cồ Việt - Hai Bà - Hà Nội', '01692016017', 'nttuan@yahoo.com');
@@ -42,8 +44,10 @@ create table Kyhan(
     chuky   varchar2(10)
 );
 
-after table kyhan
+alter table kyhan
 add constraint pk_KyH_maK PRIMARY KEY (mak);
+
+--> viết sai câu lệnh (alter table chứ ko phải after table) 
 
 INSERT INTO Kyhan (maK, kyhan, laisuat, chuky) VALUES ('TK0', 'Không kỳ hạn', 0.30, '1 Nam');
 INSERT INTO Kyhan (maK, kyhan, laisuat, chuky) VALUES ('TK1', '01 tháng', 4.50, '1 Nam');
@@ -59,9 +63,11 @@ create table ChiNhanh (
     maCN        varchar2(10),
     tenCN       nvarchar2(20),
     phuTrach    nvarchar2(20)
-)
-after table chinhanh
+);
+alter table chinhanh
 add constraint pk_ChiN_maCn PRIMARY KEY (macn);
+
+--> viết sai câu lệnh (alter table chứ ko phải after table) 
 
 INSERT INTO ChiNhanh (maCN, tenCN, phuTrach) VALUES ('CN01', 'Hội sở chính', 'Nguyễn Ngọc Lan');
 INSERT INTO ChiNhanh (maCN, tenCN, phuTrach) VALUES ('CN02', 'Chi nhánh Nam Hà N?i', 'Phan Thu Huệ');
@@ -81,7 +87,7 @@ create table Tietkiem (
     ngayrut     date,
     sotiennhan  number(15, 2)
 );
-after table tietkiem
+alter table tietkiem
 add constraint pk_TietK_maSo PRIMARY KEY (maSo);
 
 after table Tietkiem
@@ -92,6 +98,11 @@ add constraint fk_TietK_noigi FOREIGN KEY (noigi) REFERENCES Chinhanh(macn);
 
 after table Tietkiem
 add constraint fk_TietK_kyhan FOREIGN KEY (kyhan) REFERENCES Kyhan(maK);
+
+--> viết sai câu lệnh (alter table chứ ko phải after table) 
+-- đề bài: 1. Create tables (Khachhang, tietkiem, chinhanh, kyhạn)   
+-- with customerid, contractid, termed, bracnchcode is primery key and insert data into database.
+--> ở bảng TietKiem đề bài không yêu cầu tạo khóa ngoại Foreign Key thì không cần tạo
 
 INSERT INTO Tietkiem (maso, makh, noigi, sotien, kyhan, ngaygui) VALUES ('S01', 'KH01', 'CN02', 1050000000.00, 'TK0', TO_DATE('10/10/2018', 'DD/MM/YYYY'));
 INSERT INTO Tietkiem (maso, makh, noigi, sotien, kyhan, ngaygui) VALUES ('S02', 'KH02', 'CN02', 850000000.00, 'TK1', TO_DATE('11/10/2018', 'DD/MM/YYYY'));
@@ -167,6 +178,11 @@ SET phanloai = (
                 group by makh            
 );
 commit;
+
+select * from khachhang; 
+
+--> OK 
+
 --3
 -- tao view để lấy số lãi suất tính theo kỳ hạn (TK0 lãi suất tinh theo tháng)
 create view v_kyhan_laisuatKh
@@ -174,10 +190,13 @@ as
 select k.mak,k.kyhan,CASE 
                        WHEN  REGEXP_SUBSTR(k.kyhan, '^\d+') IS NULL 
                        THEN  k.laisuat/12
-                       ELSE  ROUND((TO_NUMBER(REGEXP_SUBSTR(k.kyhan, '^\d+'))/(TO_NUMBER(REGEXP_SUBSTR(k.chuky, '^\d+')*12))*(k.laisuat),3) 
+                       ELSE  ROUND((TO_NUMBER(REGEXP_SUBSTR(k.kyhan, '^\d+'))/(TO_NUMBER(REGEXP_SUBSTR(k.chuky, '^\d+')*12))*(k.laisuat)),3 )
                      END AS  laisuat_kh
 from kyhan k;
 commit;
+
+-- tạo view lãi suất mà viết sai cả cú pháp nhá, -> ẩu quá, anh nói bao lần rồi, lần sau cẩn thận những thứ mk viết nhá
+
 
 -- 
 CREATE OR REPLACE PROCEDURE TinhTongSoTienRut (
@@ -242,6 +261,7 @@ EXCEPTION
     p_Message:='Error: ' || SQLERRM;
     p_tongSoTien := 0;
 END;
+--> không chạy được sp này
 
 -- 4
 CREATE OR REPLACE PROCEDURE TimkiemKhachHang(
@@ -274,6 +294,7 @@ EXCEPTION
     p_Message := 'Error: ' || SQLERRM;
 END;
 
+--> không cần tới biến p_Message vì thông tin khách hàng có hay không thì đã trả dữ liệu ra biến p_cursor rồi
 
 
 
