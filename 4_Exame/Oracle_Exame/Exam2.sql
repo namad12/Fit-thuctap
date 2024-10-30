@@ -1,4 +1,4 @@
---1
+﻿--1
 -- 
 create table KhachHang (
     makh        varchar2(10),
@@ -11,26 +11,26 @@ create table KhachHang (
 after table KhachHang
 add constraint pk_KhachH_maKH PRIMARY KEY (makh);
 
-INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH01', 'Tr?n Van T�ng', '34 H�ng B?c - Ho�n Ki?m - H� N?i', '0913536674', 'tungtv@gmail.com');
-INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH02', 'Nguy?n Thanh Tu?n', '101 �?i C? Vi?t - Hai B� - H� N?i', '01692016017', 'nttuan@yahoo.com');
-INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH03', 'Ph?m Th? Anh', 'C? Loa - ��ng Anh - H� N?i', '01226930001', 'anhthe80@gmail.com');
-INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH04', 'Nguy?n Th? Phuong Tr�', '223 B?ch Mai - Hai B� - H� N?i', '0909123668', 'phuongtra_matnai@gmail.com');
-INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH05', 'L� Nh?t Ho�ng Giang', '469 Gi?i Ph�ng - Ho�ng Mai - H� N?i', '0934691616', 'nhatgiang_n1@gmail.com');
-INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH06', 'Ho�ng Di?u Linh', '38 Ph? Hu? - Hai B� - H� N?i', '0913536666', 'hnl_daigia@yahoo.com');
-INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH07', 'Phan �ang Tr�c', '115 Nguy?n Tr�i - Thanh Xu�n - H� N?i', '01231584158', 'phandangtruc@gmail.com');
-INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH08', 'H? H?i H?u', 'Ph� L? - ��ng Anh - H� N?i', '01229022001', 'bonghongxanh@gmail.com');
-INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH09', 'Ph?m M?nh Ho�n', '195 B?ch Mai - Hai B� - H� N?i', '0901023668', 'hoanmp102@yahoo.com');
-INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH10', 'Ng� Tr�c Qu�n', '501 Gi?i Ph�ng - Ho�ng Mai - H� N?i', '0933344416', 'ngotrucquan.gp@gmail.com');
-INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH11', 'Nguy?n H?u M?nh', '275 Ph? Hu? - Hai B� - H� N?i', '0913536618', 'manh_1284@gmail.com');
-INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH12', 'Ho�ng M?nh Khang', '195 Mai H?c �? - Hai B� - H� N?i', '0913246789', 'khangmanhhoang@gmail.com');
-INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH13', 'L�m Minh Nh?t', '101 H�ng B�i - Ho�n Ki?m - H� N?i', '0978787868', 'lam_japan@gmail.com');
-INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH14', 'Truong M?nh H�ng', '19 T�n �?c Th?ng - �?ng �a - H� N?i', '0908343566', 'truongmanh.hung@gmail.com');
-INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH15', 'Nguy?n T?t B�nh', '27 L�n �ng - Ho�n Ki?m - H� N?i', '0909001122', 'binhnt@gmail.com');
-INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH16', 'Vu Thanh Hi?u', '194 Xu�n Th?y - C?u Gi?y - H� N?i', '0909091234', 'vuhieu1979@gmail.com');
-INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH17', 'Tr?n Gi�ng Huong', '54 Ch�a B?c - �?ng �a - H� N?i', '01240001369', 'huong.tran.giang@yahoo.com');
-INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH18', 'Nguy?n Minh Th�ng', '122 �?i C?n - Ba ��nh - H� N?i', '0913572266', 'thongminh102@gmail.com');
-INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH19', 'Ho�ng Van �?t', 'P2501 - T10 Times City - Hai B� - H� N?i', '094321234', 'hoangvandat.timescity@gmailcom');
-INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH20', 'Nguy?n Tr?ng Quang', '91 H�ng Bu?m - Ho�n Ki?m - H� N?i', '0983691618', 'quang.fox@gmail.com');
+INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH01', 'Trần Văn Tùng', '34 Hàng Bạc - Hoàn Kiếm - Hà Nội', '0913536674', 'tungtv@gmail.com');
+INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH02', 'Nguyễn Thanh Tuấn', '101 Đại Cồ Việt - Hai Bà - Hà Nội', '01692016017', 'nttuan@yahoo.com');
+INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH03', 'Phạm Thế Anh', 'Cổ Loa - Đông Anh - Hà Nội', '01226930001', 'anhthe80@gmail.com');
+INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH04', 'Nguyễn Thị Phương Trà', '223 Bạch Mai - Hai Bà - Hà Nội', '0909123668', 'phuongtra_matnai@gmail.com');
+INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH05', 'Lê Nhật Hoàng Giang', '469 Giải Phóng - Hoàng Mai - Hà Nội', '0934691616', 'nhatgiang_n1@gmail.com');
+INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH06', 'Hoàng Diệu Linh', '38 Phố Huế - Hai Bà - Hà Nội', '0913536666', 'hnl_daigia@yahoo.com');
+INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH07', 'Phan Ðang Trúc', '115 Nguyễn Trãi - Thanh Xuân - Hà Nội', '01231584158', 'phandangtruc@gmail.com');
+INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH08', 'Hồ Hải Hậu', 'Phù Lỗ - Đông Anh - Hà Nội', '01229022001', 'bonghongxanh@gmail.com');
+INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH09', 'Phạm Mạnh Hoàn', '195 Bạch Mai - Hai Bà - Hà Nội', '0901023668', 'hoanmp102@yahoo.com');
+INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH10', 'Ngô Trúc Quân', '501 Giải Phóng - Hoàng Mai - Hà Nội', '0933344416', 'ngotrucquan.gp@gmail.com');
+INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH11', 'Nguyễn Hữu Mạnh', '275 Phố Huế - Hai Bà - Hà Nội', '0913536618', 'manh_1284@gmail.com');
+INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH12', 'Hoàng Mạnh Khang', '195 Mai Hắc Đế - Hai Bà - Hà Nội', '0913246789', 'khangmanhhoang@gmail.com');
+INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH13', 'Lâm Minh Nhật', '101 Hàng Bài - Hoàn Kiếm - Hà Nội', '0978787868', 'lam_japan@gmail.com');
+INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH14', 'Trương Mạnh Hùng', '19 Tôn Đức Thắng - Đống Đa - Hà Nội', '0908343566', 'truongmanh.hung@gmail.com');
+INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH15', 'Nguyễn Tất Bình', '27 Lãn Ông - Hoàn Kiếm - Hà Nội', '0909001122', 'binhnt@gmail.com');
+INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH16', 'Vũ Thanh Hiếu', '194 Xuân Thủy - Cầu Giấy - Hà Nội', '0909091234', 'vuhieu1979@gmail.com');
+INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH17', 'Trần Giáng Hương', '54 Chùa Bộc - Đống Đa - Hà Nội', '01240001369', 'huong.tran.giang@yahoo.com');
+INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH18', 'Nguyễn Minh Thông', '122 Đội Cấn - Ba Đình - Hà Nội', '0913572266', 'thongminh102@gmail.com');
+INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH19', 'Hoàng Văn Đạt', 'P2501 - T10 Times City - Hai Bà - Hà Nội', '094321234', 'hoangvandat.timescity@gmailcom');
+INSERT INTO KhachHang (makh, hoten, diachi, sdt, email) VALUES ('KH20', 'Nguyễn Trọng Quang', '91 Hàng Buồm - Hoàn Kiếm - Hà Nội', '0983691618', 'quang.fox@gmail.com');
 
 commit;
 
@@ -45,13 +45,13 @@ create table Kyhan(
 after table kyhan
 add constraint pk_KyH_maK PRIMARY KEY (mak);
 
-INSERT INTO Kyhan (maK, kyhan, laisuat, chuky) VALUES ('TK0', 'Kh�ng k? h?n', 0.30, '1 Nam');
-INSERT INTO Kyhan (maK, kyhan, laisuat, chuky) VALUES ('TK1', '01 th�ng', 4.50, '1 Nam');
-INSERT INTO Kyhan (maK, kyhan, laisuat, chuky) VALUES ('TK3', '03 th�ng', 5.00, '1 Nam');
-INSERT INTO Kyhan (maK, kyhan, laisuat, chuky) VALUES ('TK6', '06 th�ng', 5.40, '1 Nam');
-INSERT INTO Kyhan (maK, kyhan, laisuat, chuky) VALUES ('TK12', '12 th�ng', 6.30, '1 Nam');
-INSERT INTO Kyhan (maK, kyhan, laisuat, chuky) VALUES ('TK24', '24 th�ng', 13.50, '2 Nam');
-INSERT INTO Kyhan (maK, kyhan, laisuat, chuky) VALUES ('TK36', '36 th�ng', 20.00, '3 Nam');
+INSERT INTO Kyhan (maK, kyhan, laisuat, chuky) VALUES ('TK0', 'Không kỳ hạn', 0.30, '1 Nam');
+INSERT INTO Kyhan (maK, kyhan, laisuat, chuky) VALUES ('TK1', '01 tháng', 4.50, '1 Nam');
+INSERT INTO Kyhan (maK, kyhan, laisuat, chuky) VALUES ('TK3', '03 tháng', 5.00, '1 Nam');
+INSERT INTO Kyhan (maK, kyhan, laisuat, chuky) VALUES ('TK6', '06 tháng', 5.40, '1 Nam');
+INSERT INTO Kyhan (maK, kyhan, laisuat, chuky) VALUES ('TK12', '12 tháng', 6.30, '1 Nam');
+INSERT INTO Kyhan (maK, kyhan, laisuat, chuky) VALUES ('TK24', '24 tháng', 13.50, '2 Nam');
+INSERT INTO Kyhan (maK, kyhan, laisuat, chuky) VALUES ('TK36', '36 tháng', 20.00, '3 Nam');
 commit;
 
 --
@@ -63,11 +63,11 @@ create table ChiNhanh (
 after table chinhanh
 add constraint pk_ChiN_maCn PRIMARY KEY (macn);
 
-INSERT INTO ChiNhanh (maCN, tenCN, phuTrach) VALUES ('CN01', 'H?i s? ch�nh', 'Nguy?n Ng?c Lan');
-INSERT INTO ChiNhanh (maCN, tenCN, phuTrach) VALUES ('CN02', 'Chi nh�nh Nam H� N?i', 'Phan Thu Hu?');
-INSERT INTO ChiNhanh (maCN, tenCN, phuTrach) VALUES ('CN03', 'Chi nh�nh Th�nh C�ng', 'Truong M?nh H?i');
-INSERT INTO ChiNhanh (maCN, tenCN, phuTrach) VALUES ('CN04', 'Chi nh�nh Ho�n Ki?m', 'T� Thanh Long');
-INSERT INTO ChiNhanh (maCN, tenCN, phuTrach) VALUES ('CN05', 'Chi nh�nh T�y H?', 'Mai Ph�c Th�nh');
+INSERT INTO ChiNhanh (maCN, tenCN, phuTrach) VALUES ('CN01', 'Hội sở chính', 'Nguyễn Ngọc Lan');
+INSERT INTO ChiNhanh (maCN, tenCN, phuTrach) VALUES ('CN02', 'Chi nhánh Nam Hà N?i', 'Phan Thu Huệ');
+INSERT INTO ChiNhanh (maCN, tenCN, phuTrach) VALUES ('CN03', 'Chi nhánh Thành Công', 'Trương Mạnh Hải');
+INSERT INTO ChiNhanh (maCN, tenCN, phuTrach) VALUES ('CN04', 'Chi nhánh Hoàn Ki?m', 'Tô Thanh Long');
+INSERT INTO ChiNhanh (maCN, tenCN, phuTrach) VALUES ('CN05', 'Chi nhánh Tây H?', 'Mai Phúc Thành');
 commit;
 
 --
@@ -168,7 +168,7 @@ SET phanloai = (
 );
 commit;
 --3
--- t?o view d? l?y s? l�i su?t t�nh theo k? h?n (TK0 l�i su?t tinh theo th�ng)
+-- tao view để lấy số lãi suất tính theo kỳ hạn (TK0 lãi suất tinh theo tháng)
 create view v_kyhan_laisuatKh
 as
 select k.mak,k.kyhan,CASE 
@@ -183,7 +183,8 @@ commit;
 CREATE OR REPLACE PROCEDURE TinhTongSoTienRut (
   p_makh IN VARCHAR2, 
   p_tongSoTien OUT NUMBER,
-  p_results OUT SYS.ODCIVARCHAR2LIST
+  p_results OUT SYS.ODCIVARCHAR2LIST,
+  p_Message OUT NVARCHAR2
 ) 
 IS
   CURSOR cr_tk IS
@@ -201,46 +202,44 @@ BEGIN
   p_tongSoTien := 0;
   
   FOR tk_record IN cr_tk LOOP 
-    -- s? th�ng t�nh t? ng�y g?i d?n ng�y hi?n t?i
+    -- số tháng tính từ ngày gửi đến ngày hiện tại
     v_tongSoThang := ROUND(MONTHS_BETWEEN(SYSDATE, tk_record.ngaygui), 3);
-    DBMS_OUTPUT.PUT_LINE('So th�ng: ' || v_tongSoThang);
     
-    -- S? l?n k? h?n d?t du?c theo k? h?n d� dang k�
+    -- Số lần ky han đạt được theo kỳ hạn đã đăng ký
     v_soKyHan := CASE
                     WHEN tk_record.kyhan = 'TK0' THEN v_tongSoThang
                     ELSE ROUND(v_tongSoThang / TO_NUMBER(REGEXP_SUBSTR(tk_record.kyhan_t, '^\d+')), 0)
                   END;
-    -- S? th�ng l? chua d?t k? h?n 
+    -- Số tháng lãi chưa đạt kỳ hạn 
     v_soThangDu := CASE
                     WHEN tk_record.kyhan = 'TK0' THEN 0
                     ELSE MOD(v_tongSoThang, TO_NUMBER(REGEXP_SUBSTR(tk_record.kyhan_t, '^\d+')))
                   END;
-    --S? ti?n ban d?u
+    --Số tiền ban đầu
     v_soTien := tk_record.sotien;
 
-    -- T�nh s? ti?n theo k? h?n g?i
+    -- Tính số tiền theo kỳ hạn gửi
     FOR i IN 1..v_soKyHan LOOP
       v_soTien := v_soTien * (1 + tk_record.laisuat_kh / 100);
     END LOOP; 
 
-    -- T�nh s? ti?n theo l�i su?t TK0 cho s? th�ng du
+    -- Tính số tiền theo lãi suất TK0 cho số tháng dư
     v_soTien := ROUND(v_soTien * (1 + (tk_record.laisuat_kh / 100) * v_soThangDu), 0);
 
-    -- C?ng d?n v�o t?ng s? ti?n
+    -- Cộng dồn vào tổng số tiền
     p_tongSoTien := p_tongSoTien + v_soTien;
 
     p_results.EXTEND;
-    p_results(p_results.COUNT) := 'K? h?n: ' || v_soKyHan || ', Th�ng du: ' || v_soThangDu || ', S? ti?n: ' || v_soTien;
+    p_results(p_results.COUNT) := 'Kỳ hạn: ' || v_soKyHan || ', Tháng dư: ' || v_soThangDu || ', Số tiền: ' || v_soTien;
   END LOOP;
   
-  OPEN p_cursor FOR 
-    SELECT COLUMN_VALUE AS details FROM TABLE(v_results);
+  
 EXCEPTION
   WHEN NO_DATA_FOUND THEN
-    DBMS_OUTPUT.PUT_LINE('No data found for customer ' || p_makh);
+    p_Message:= 'No data found for customer ' || p_mak);
     p_tongSoTien := 0;
   WHEN OTHERS THEN
-    DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
+    p_Message:='Error: ' || SQLERRM;
     p_tongSoTien := 0;
 END;
 
@@ -248,31 +247,34 @@ END;
 CREATE OR REPLACE PROCEDURE TimkiemKhachHang(
     p_IdKhachHang IN khachhang.makh%TYPE DEFAULT NULL, 
     p_TenKhachHang IN khachhang.hoten%TYPE DEFAULT NULL, 
-    p_SoDienThoai IN khachhang.sdt%TYPE DEFAULT NULL
+    p_SoDienThoai IN khachhang.sdt%TYPE DEFAULT NULL,
+    p_cursor OUT SYS_REFCURSOR,
+    p_Message OUT NVARCHAR2
 )
 IS 
 BEGIN
-    -- D�ng ti�u d?
-    DBMS_OUTPUT.PUT_LINE(RPAD('M� kh�ch h�ng', 20) || RPAD('T�n kh�ch h�ng', 30) || RPAD('M� s? TK', 15) || RPAD('K? h?n', 10) || RPAD('T�n chi nh�nh', 25) || RPAD('Ph? tr�ch CN', 20) || 'L�i su?t');
-    FOR kh_record IN(
-        SELECT k.makh,k.hoten,t.maso,t.kyhan,c.tencn,c.phutrach,TO_CHAR(laisuat,'00.00') || '%' as laisuat
-        FROM    khachhang k,chinhanh c, kyhan h,tietkiem t
-        WHERE   k.makh=t.makh 
-                AND t.noigi=c.macn
-                AND t.kyhan=h.mak
-                AND (k.makh = p_IdKhachHang OR p_IdKhachHang IS NULL)
-                AND (k.hoten = p_TenKhachHang OR p_TenKhachHang IS NULL)
-                AND (k.sdt = p_SoDienThoai OR p_SoDienThoai IS NULL)
-    )
-    LOOP 
-    -- D�ng d? li?u
-    DBMS_OUTPUT.PUT_LINE(RPAD(kh_record.makh, 20) || RPAD(kh_record.hoten, 30) || RPAD(kh_record.maso, 15) || RPAD(kh_record.kyhan, 10) || RPAD(kh_record.tencn, 25) || RPAD(kh_record.phutrach, 20) || kh_record.laisuat);    END LOOP;
+    OPEN p_cursor FOR
+        SELECT k.makh, k.hoten, t.maso, t.kyhan, c.tencn, c.phutrach, TO_CHAR(laisuat, '00.00') || '%' AS laisuat
+        FROM khachhang k
+        JOIN tietkiem t ON k.makh = t.makh
+        JOIN chinhanh c ON t.noigi = c.macn
+        JOIN kyhan h ON t.kyhan = h.mak
+        WHERE (k.makh = p_IdKhachHang OR p_IdKhachHang IS NULL)
+          AND (k.hoten = p_TenKhachHang OR p_TenKhachHang IS NULL)
+          AND (k.sdt = p_SoDienThoai OR p_SoDienThoai IS NULL);
+    
+    IF p_cursor%FOUND THEN
+        p_Message := 'Data retrieved successfully.';
+    ELSE
+        p_Message := 'No data found.';
+    END IF;
+    
 EXCEPTION
   WHEN OTHERS THEN
-    DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
-END; 
+    p_Message := 'Error: ' || SQLERRM;
+END;
 
-exec TimkiemKhachHang('KH01');
+
 
 
 
