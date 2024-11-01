@@ -190,20 +190,24 @@ as
 select k.mak,k.kyhan,CASE 
                        WHEN  REGEXP_SUBSTR(k.kyhan, '^\d+') IS NULL 
                        THEN  k.laisuat/12
-                       ELSE  ROUND((TO_NUMBER(REGEXP_SUBSTR(k.kyhan, '^\d+'))/(TO_NUMBER(REGEXP_SUBSTR(k.chuky, '^\d+')*12))*(k.laisuat)),3 )
+                       ELSE ROUND((TO_NUMBER(REGEXP_SUBSTR(k.kyhan, '^\d+')) /(TO_NUMBER(REGEXP_SUBSTR(k.chuky, '^\d+')) * 12) * k.laisuat), 3)
                      END AS  laisuat_kh
 from kyhan k;
 commit;
 
 -- tạo view lãi suất mà viết sai cả cú pháp nhá, -> ẩu quá, anh nói bao lần rồi, lần sau cẩn thận những thứ mk viết nhá
+CREATE OR REPLACE TYPE T_ResultRecord AS OBJECT (
+    ky_han VARCHAR2(50),
+    thang_du NUMBER,
+    so_tien NUMBER
+);
 
+CREATE OR REPLACE TYPE T_ResultTable AS TABLE OF T_ResultRecord;
 
 -- 
 CREATE OR REPLACE PROCEDURE TinhTongSoTienRut (
-  p_makh IN VARCHAR2, 
-  p_tongSoTien OUT NUMBER,
-  p_results OUT SYS.ODCIVARCHAR2LIST,
-  p_Message OUT NVARCHAR2
+  p_makh IN khachhang.makh%TYPE,
+  p_results OUT SYS_REFCURSOR
 ) 
 IS
   CURSOR cr_tk IS
@@ -217,8 +221,9 @@ IS
   v_soKyHan NUMBER;
   v_soThangDu NUMBER;
   
+  v_results T_ResultTable := T_ResultTable();
+  
 BEGIN
-  p_tongSoTien := 0;
   
   FOR tk_record IN cr_tk LOOP 
     -- số tháng tính từ ngày gửi đến ngày hiện tại
@@ -244,22 +249,17 @@ BEGIN
 
     -- Tính số tiền theo lãi suất TK0 cho số tháng dư
     v_soTien := ROUND(v_soTien * (1 + (tk_record.laisuat_kh / 100) * v_soThangDu), 0);
-
-    -- Cộng dồn vào tổng số tiền
-    p_tongSoTien := p_tongSoTien + v_soTien;
-
-    p_results.EXTEND;
-    p_results(p_results.COUNT) := 'Kỳ hạn: ' || v_soKyHan || ', Tháng dư: ' || v_soThangDu || ', Số tiền: ' || v_soTien;
+    
+    -- Thêm kết quả vào bảng v_results
+        v_results.EXTEND;
+        v_results(v_results.COUNT) := T_ResultRecord('Kỳ hạn: ' || v_soKyHan, v_soThangDu, v_soTien);
+    
   END LOOP;
   
-  
-EXCEPTION
-  WHEN NO_DATA_FOUND THEN
-    p_Message:= 'No data found for customer ' || p_mak);
-    p_tongSoTien := 0;
-  WHEN OTHERS THEN
-    p_Message:='Error: ' || SQLERRM;
-    p_tongSoTien := 0;
+  OPEN p_results FOR
+  SELECT r.ky_han, r.thang_du, r.so_tien
+  FROM TABLE(v_results) r;
+ 
 END;
 --> không chạy được sp này
 
@@ -268,8 +268,7 @@ CREATE OR REPLACE PROCEDURE TimkiemKhachHang(
     p_IdKhachHang IN khachhang.makh%TYPE DEFAULT NULL, 
     p_TenKhachHang IN khachhang.hoten%TYPE DEFAULT NULL, 
     p_SoDienThoai IN khachhang.sdt%TYPE DEFAULT NULL,
-    p_cursor OUT SYS_REFCURSOR,
-    p_Message OUT NVARCHAR2
+    p_cursor OUT SYS_REFCURSOR
 )
 IS 
 BEGIN
@@ -282,16 +281,6 @@ BEGIN
         WHERE (k.makh = p_IdKhachHang OR p_IdKhachHang IS NULL)
           AND (k.hoten = p_TenKhachHang OR p_TenKhachHang IS NULL)
           AND (k.sdt = p_SoDienThoai OR p_SoDienThoai IS NULL);
-    
-    IF p_cursor%FOUND THEN
-        p_Message := 'Data retrieved successfully.';
-    ELSE
-        p_Message := 'No data found.';
-    END IF;
-    
-EXCEPTION
-  WHEN OTHERS THEN
-    p_Message := 'Error: ' || SQLERRM;
 END;
 
 --> không cần tới biến p_Message vì thông tin khách hàng có hay không thì đã trả dữ liệu ra biến p_cursor rồi
