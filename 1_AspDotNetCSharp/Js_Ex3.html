@@ -8,18 +8,20 @@
         }
         form {
             padding: 25px 60px;
-            width: 500px;
+            width: fit-content;
             margin: 0 auto;
             border: 1px solid;
             box-sizing: border-box;
         }
         
         label {
+            text-align: end;
             display: inline-block;
             width: 100px;
             margin-bottom: 10px;
         }
         .error{
+            width: fit-content;
             color: red;
         }
     </style>
@@ -43,13 +45,13 @@
             if(userId=='' || password=='' ||name =='' || zipCode =='' || email=='' || sex=='' || language==''){
                 alert('Vui long nhap day du thong tin cân thiêt')
             }
-            if(userId.length<5 && userId.length>12){
+            if(userId=='' || (userId.length<5 && userId.length>12)){
                 document.getElementById('checkID').textContent='Required and must be of length 5 to 12';
             }
             else{
                 document.getElementById('checkID').textContent='';
             }
-            if(password.length<5 && password.length>12){
+            if(password=='' || (password.length<5 && password.length>12)){
                 document.getElementById('checkPW').textContent='Required and must be of length 5 to 12';
             }
             else{
@@ -61,6 +63,12 @@
                 document.getElementById('checkN').textContent = 'Required and alphabates only ';
             } else {
                 document.getElementById('checkN').textContent = ''; 
+            }
+
+            if (country == "none") {
+                document.getElementById('checkCt').textContent = 'Select a country';  
+            } else {
+                document.getElementById('checkCt').textContent = ''; 
             }
 
             var zipCodeRegex = /^[0-9]+$/; 
@@ -79,67 +87,75 @@
             }
 
         }
+        function onlyOne(checkbox) {
+            var checkboxes = document.getElementsByName('language');
+            checkboxes.forEach((item) => {
+                if (item !== checkbox) item.checked = false;
+            });
+        }
     </script>
 </head>
 <body>
     
     <form>
         <h1>Form Đăng Ký</h1>
+        
         <label for="userid">User ID:</label>
         <input type="text" id="userid" name="userid">
-        <div class="error" id="checkID"></div>
+        <label class="error" id="checkID"></label>
         <br>
 
         <label for="password">Password:</label>
         <input type="password" id="password" name="password">
-        <div class="error" id="checkPW"></div>
+        <label class="error" id="checkPW"></label>
         <br> 
 
         <label for="name">Name:</label>
         <input type="text" id="name" name="name">
-        <div class="error" id="checkN"></div>
+        <label class="error" id="checkN"></label>
         <br>
 
         <label for="address">Address:</label>
         <input type="text" id="address" name="address">
-        <div class="error" id="checkAdr"></div>
+        <label class="error" id="checkAdr"></label>
         <br> 
 
 
         <label for="country">Country:</label>
         <select id="country" name="country">
+            <option value="none">Please select a country</option> 
             <option value="vietnam">Vietnam</option> 
             <option value="usa">USA</option>
         </select>
-        <div class="error" id="checkCt"></div>
+        <label class="error" id="checkCt"></label>
         <br>
 
         <label for="zipcode">ZIP Code:</label>
         <input type="text" id="zipcode" name="zipcode">
-        <div class="error" id="checkZc"></div>
+        <label class="error" id="checkZc"></label>
         <br>
 
         <label for="email">Email:</label>
         <input type="email" id="email" name="email">
-        <div class="error" id="checkE"></div>
+        <label class="error" id="checkE"></label>
         <br>
 
         <label>Sex:</label>  
         <input type="radio" name="sex" value="male"> Male
         <input type="radio" name="sex" value="female"> Female
-        <div class="error" id="checkS"></div>
+        <label class="error" id="checkS"></label>
         <br>
 
         <label>Language:</label>   
-        <input type="radio" name="language" value="english"> English
-        <input type="radio" name="language" value="nonenglish"> Non-English
-        <div class="error" id="checkL"></div>
+        <input type="checkbox" name="language" value="english" onclick="onlyOne(this)"> English
+        <input type="checkbox" name="language" value="nonenglish" onclick="onlyOne(this)"> Non-English
+        <label class="error" id="checkL"></label>
         <br>
 
-        <label for="about">About:</label><br>
+        <label for="about" >About:</label>
         <textarea id="about" name="about" rows="4" cols="50"></textarea><br>
 
-        <button type="button" onclick="Validate()">Submit</button>  
+        <button type="button" style="margin-left: 100px;" onclick="Validate()">Submit</button>  
 
     </form>
 </body>

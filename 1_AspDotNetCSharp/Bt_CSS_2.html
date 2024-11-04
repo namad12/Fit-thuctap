@@ -1,52 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EzFuture</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
-            
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            width: 100%;
             font-family: Arial, sans-serif;
         }
 
-        .container {
-            width: 100%;
+        .page {
+            width: 1100px;
             margin: 0 auto;
             padding: 20px 0;
         }
 
         header {
+            width: 100%;
+        }
+
+        .logo {
             display: flex;
             justify-content: space-between;
+            padding: 5px;
             align-items: center;
+           
+        }
+        .logo-text {
+            display: block;
+            font-family: Arial, sans-serif;
+            font-weight: 100; /* Chữ mỏng */
+            font-size: 40px; /* Kích thước chữ */
+            color: #505050; /* Màu chữ */
+        }
+
+        .fav_menu{
+            margin-bottom: 5px;
+            display: flex;
+            color: #f58220;
+            text-decoration: none;
+            justify-content: end; 
+        }
+        nav {
+            width: 100%; 
         }
 
         .menu {
             list-style-type: none;
             display: flex;
-            gap: 2px;
+            justify-content: space-between; /* Đẩy các menu item đều ra hai bên */
+            padding: 0; 
         }
 
         .menu > li {
+            flex: 1; /* Các menu item chiếm đều không gian */
             position: relative;
+            background-color: #f58220;
+            padding: 5px;
+            height: 60px;
+            margin-right: 2px;
         }
 
         .menu > li > a {
-            height: 60px;
+            font-size: 14px;
+            height: 50px;
             text-decoration: none;
-            padding: 10px 20px;
-            background-color: #f58220;
             color: white;
-            display: block;
+            display: flex; 
+            /* align-items: center; 
+            justify-content: center;  */
+            transition: background-color 0.3s;
+            position: relative;
+            padding-right: 20px;
+        }
+
+        .menu > li > a .icon-arrow {
+            position: absolute;
+            bottom: 5px; /* Canh dưới */
+            right: 5px;  /* Canh phải */
+            font-size: 12px;
         }
 
         .submenu {
@@ -56,68 +96,158 @@
             left: 0;
             background-color: #cc6600;
             list-style-type: none;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); 
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
             z-index: 1;
+            padding: 0; 
+        }
+
+        .submenu li {
+            width: 240px;
+            height: 45px; 
         }
 
         .submenu li a {
             padding: 10px;
             display: block;
-            background-color: #cc6600;
             color: white;
             text-decoration: none;
-            width: 240px;
-            height: 40px; 
-            
         }
 
         .menu li:hover > .submenu {
-            display: block;
+            display: block; 
         }
 
-        .menu li:hover > a {
+        .menu li:hover {
             background-color: #cc6600; 
-            
         }
 
         .submenu li a:hover {
-            background-color:  #f58220; 
-            
+            background-color: #f58220; 
+        }
+        .breadcrumb {
+            list-style: none;
+            padding: 0;
+            margin: 6px 0px;
+        }
+
+        .breadcrumb li {
+            display: inline-block;
+        }
+
+        .breadcrumb li:not(:last-child)::after {
+            content: " > ";
+        }
+
+        .breadcrumb a {
+            text-decoration: none;
+            color: #636262; 
+        }
+        .label{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 7px;
+            color: #f58220;
+            font-size: 17px;
+        }
+        .container{
+            border: #636262 1px solid;
+            height: 600px;
+        }
+        footer{
+            display: flex;
+            justify-content: space-between;
+            padding: 5px;
+            align-items: center; 
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
+    <div class="page">
+        <header>
             <div class="logo">
-
-                <img src="" alt="FPT Securities">
+                <div class="logo-text">
+                    EzFuture <span>(PRODUCTION)</span>
+                </div>
+                <img src="Images/logo.gif" alt="FPT Securities" height="60px"/>
+            </div>
+            <div class="fav_menu">
+                <p >Xin Chào TAMNV</p>
+                <a style="margin-left: 5px;">Sign out</a>
+                <img src="Images/fav_menu.gif">
             </div>
             <nav>
                 <ul class="menu">
-                    <li><a href="#">Tham số</a></li>
-                    <li><a href="#">Giao dịch</a></li>
-                    <li><a href="#">Transfer</a></li>
-                    <li><a href="#">Tra cứu</a></li>
-                    <li><a href="#">Phí VSD</a>
+                    <li>
+                        <a href="#">THAM SỐ <i class="fa-solid fa-caret-down icon-arrow" style="color: #ffffff;"></i></a>
+                        
                         <ul class="submenu">
-                            <li><a href="#">Phí giao dịch QUVT</a></li>
-                            <li><a href="#">Phí giao dịch QUVT tổng hợp</a></li>
-                            <li><a href="#">Phí giao dịch QUVT chờ xét</a></li>
+                            <li><a href="#">Tham số 1</a></li>
+                            <li><a href="#">Tham số 2</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Cuối ngày</a></li>
-                    <li><a href="#">VSD Gateway</a></li>
-                    <li><a href="#">Tiền khách</a></li>
+                    <li>
+                        <a href="#">GIAO DỊCH <i class="fa-solid fa-caret-down icon-arrow" style="color: #ffffff;"></i></a>
+                        
+                        <ul class="submenu">
+                            <li><a href="#">Giao dịch 1</a></li>
+                            <li><a href="#">Giao dịch 2</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">TRANSFER <i class="fa-solid fa-caret-down icon-arrow" style="color: #ffffff;"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#">Transfer 1</a></li>
+                            <li><a href="#">Transfer 2</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">TRA CỨU <i class="fa-solid fa-caret-down icon-arrow" style="color: #ffffff;"></i></a>
+                        
+                        <ul class="submenu">
+                            <li><a href="#">Tra cứu 1</a></li>
+                            <li><a href="#">Tra cứu 2</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">PHÍ VSD <i class="fa-solid fa-caret-down icon-arrow" style="color: #ffffff;"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#">Tra cứu phí QLVT</a></li>
+                            <li><a href="#">Tra cứu phí QLVT tổng hợp</a></li>
+                            <li><a href="#">Tra cứu phí QLVT chi tiết</a></li>
+                            <li><a href="#">Tra cứu phí QL TSKQ</a></li>
+                            <li><a href="#">Tra cứu phí QL TSKQ TH</a></li>
+                            <li><a href="#">Tra cứu phí QL TSKQ chi tiết</a></li>
+                            <li><a href="#">Danh sách KH nên rút D.VSD</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">CUỐI NGÀY <i class="fa-solid fa-caret-down icon-arrow" style="color: #ffffff;"></i></a></li>
+                    <li><a href="#">VSD GATEWAY <i class="fa-solid fa-caret-down icon-arrow" style="color: #ffffff;"></i></a></li>
+                    <li><a href="#">TIỆN ÍCH KHÁC <i class="fa-solid fa-caret-down icon-arrow" style="color: #ffffff;"></i></a></li>
                 </ul>
             </nav>
-        </div>
-    </header>
-    <main>
-
-    </main>
-    <footer>
-
-    </footer>
+        </header>
+        <main style="width: 100%;">
+            <ul class="breadcrumb">
+                <li><a href="#">Internal Portal</a></li>
+                <li><a href="#">EzFuture</a></li>
+              </ul>
+            <div class="container" >
+                <div class="label">
+                    <p> EZFUTURE SHORT LIST</p>
+                    <img src="Images/AddFav30.gif">
+                </div>
+            </div>
+            
+        </main>
+        <footer>
+            <div>
+                <div style="display: inline-block;">2020 FPT Secunties FIT |</div>
+                <a href="https://internal.fpts.com.vn/"> https://internal.fpts.com.vn/</a>
+            </div>
+            <img src="Images/logo_small.gif">
+        </footer>
+    </div>
 </body>
 </html>
