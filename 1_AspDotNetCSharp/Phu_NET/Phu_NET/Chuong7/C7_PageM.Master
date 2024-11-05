@@ -1,0 +1,141 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="C7_PageM.master.cs" Inherits="Phu_NET.Chuong7.C7_PageM" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        body {
+            width: 100%;
+            margin: 0px;
+        }
+
+        nav {
+            width: 100%;
+        }
+
+        .menu {
+            list-style-type: none;
+            display: flex;
+            justify-content: space-between; /* Đẩy các menu item đều ra hai bên */
+            padding: 0;
+            margin: 0px;
+        }
+
+            .menu > li {
+                position: relative;
+                background-color: #1645c7;
+                padding: 5px;
+                height: 60px;
+                margin-right: 2px;
+            }
+
+                .menu > li > a {
+                    font-size: 14px;
+                    height: 50px;
+                    text-decoration: none;
+                    color: white;
+                    display: flex;
+                    /* align-items: center; 
+        justify-content: center;  */
+                    transition: background-color 0.3s;
+                    position: relative;
+                    padding-right: 20px;
+                }
+
+                    .menu > li > a .icon-arrow {
+                        position: absolute;
+                        bottom: 5px; /* Canh dưới */
+                        right: 5px; /* Canh phải */
+                        font-size: 12px;
+                    }
+
+        .submenu {
+            position: absolute;
+            display: none;
+            top: 100%;
+            left: 0;
+            background-color: #1645c7;
+            list-style-type: none;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            padding: 0;
+        }
+
+            .submenu li {
+                width: 240px;
+                height: 45px;
+            }
+
+                .submenu li a {
+                    margin: 10px;
+                    display: block;
+                    color: white;
+                    text-decoration: none;
+                }
+
+        .menu li:hover > .submenu {
+            display: block;
+        }
+
+        .menu li:hover {
+            background-color: dodgerblue;
+        }
+
+        .submenu li a:hover {
+            background-color: dodgerblue;
+        }
+        /* Vô hiệu hóa hover cho phần tử có lớp no-hover */
+        .no-hover:hover {
+            background-color: inherit;
+            color: inherit;
+        }
+
+        main {
+            margin-top: 5px;
+            padding: 20px;
+        }
+
+        h2 {
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <nav>
+            <ul class="menu">
+                <li style="width: 15%">
+                    <a href="#">PHÒNG BAN </a>
+                    <ul class="submenu">
+                        <li><a href="Ex3_ThietLapPhongBan.aspx">Thiết lập phòng ban</a></li>
+                        <li><a href="Ex3_ThietLapBacLuong.aspx">Thiết lập bậc lương</a></li>
+                        <li><a href="Ex3_TraCuuPhongBan.aspx">Tra cứu phòng ban</a></li>
+                    </ul>
+                </li>
+                <li style="width: 15%">
+                    <a href="#">NHÂN VIÊN </a>
+
+                    <ul class="submenu">
+                        <li><a href="Ex3_ThietLapNhanVien.aspx">Thiết lập nhân viên</a></li>
+                        <li><a href="Ex3_TraCuuNhanVien.aspx">Tra cứu nhân viên</a></li>
+                    </ul>
+                </li>
+                <li class="no-hover" style="width: 70%"></li>
+            </ul>
+        </nav>
+        <main style="border: solid 1px #636262; height: 550px">
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; <%: DateTime.Now.Year %> FPT Securities FIT </p>
+        </footer>
+    </form>
+</body>
+</html>
