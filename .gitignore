@@ -4,7 +4,6 @@
 
 /.vs
 *.cache
-*.cs
 /1_AspDotNetCSharp/Phu_NET/Phu_NET/obj/Debug/Phu_NET.csproj.AssemblyReference.cache
 /1_AspDotNetCSharp/Phu_NET/.vs/Phu_NET/config/applicationhost.config
 /1_AspDotNetCSharp/Phu_NET/.vs/Phu_NET/FileContentIndex/3d629452-30a4-4f2e-ac99-22c7da96a091.vsidx
