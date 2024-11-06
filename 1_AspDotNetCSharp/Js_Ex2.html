@@ -35,22 +35,30 @@
         const numberInput = document.getElementById('numberInput');
         const result = document.getElementById('result');
         const lb = document.getElementById('label');
-        result.innerText="";
-        
+        var count=0;
+        lb.innerText="";
+        result.innerText=""
         if(numberInput.value==""){
             lb.innerText='Vui lòng nhập số muốn hiện danh sách ';
         }
         else{
-            lb.innerText='Danh sách các số nguyên tố sau '+numberInput.value;
+            
             const n = parseInt(numberInput.value);
-            for(var i=1;i<=n;i++){
+            for(var i=2;i<n;i++){
                 console.log(i);
                 if (isPrime(i)) {
-                    console.log(i);
+                    count++;
                     const li = document.createElement('li');
                     li.textContent = i;
                     result.appendChild(li);
                 }
+            }
+            if(count==0){
+                
+                lb.innerText="Không có số nguyên tố nào nhỏ hơn "+numberInput.value;
+            }
+            else{
+                lb.innerText='Danh sách các số nguyên tố sau '+numberInput.value;
             }
             numberInput.value='';
         }
