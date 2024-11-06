@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Form Đăng Ký</title>
+    <title>Registration Form</title>
     <style>
         h1{
             text-align: center;
@@ -73,7 +73,7 @@
 
             var zipCodeRegex = /^[0-9]+$/; 
             if (!zipCodeRegex.test(zipCode)) {
-                document.getElementById('checkZc').textContent = 'Required,Must be nemberic only ';
+                document.getElementById('checkZc').textContent = 'Required. Must be nemberic only ';
             } else {
                 document.getElementById('checkZc').textContent = ''; 
             }
@@ -98,7 +98,7 @@
 <body>
     
     <form>
-        <h1>Form Đăng Ký</h1>
+        <h1>Registration Form</h1>
         
         <label for="userid">User ID:</label>
         <input type="text" id="userid" name="userid">
@@ -158,5 +158,13 @@
         <button type="button" style="margin-left: 100px;" onclick="Validate()">Submit</button>  
 
     </form>
+
+    <div>
+        <h2>OK, nhưng vẫn còn bị làm theo chưa đúng yêu cầu đề bài</h2>
+        <li>trường User Id yêu cầu độ dài từ 5 - 12 ký tự thì nhập 3 ký tự vẫn validate thành công</li>
+        <li>trường Password yêu cầu độ dài từ 7 - 12 ký tự thì nhập 3 ký tự vẫn validate thành công</li>
+        <li>độ dài của các trường input không đúng, code đang để dài bằng nhau hết, trong khi giao diện ở trong ảnh ở bài tập thì nó có độ dài ngắn khác nhau</li>
+    </div>
+    
 </body>
 </html>
