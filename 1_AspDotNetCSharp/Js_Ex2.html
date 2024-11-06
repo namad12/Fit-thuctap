@@ -37,17 +37,23 @@
         const lb = document.getElementById('label');
         result.innerText="";
         
-        lb.innerText='Danh sách các số nguyên tố sau '+numberInput.value;
-        const n = parseInt(numberInput.value);
-        for(var i=1;i<=n;i++){
-            console.log(i);
-            if (isPrime(i)) {
-                console.log(i);
-                const li = document.createElement('li');
-                li.textContent = i;
-                result.appendChild(li);
-            }
+        if(numberInput.value==""){
+            lb.innerText='Vui lòng nhập số muốn hiện danh sách ';
         }
-        numberInput.value='';
+        else{
+            lb.innerText='Danh sách các số nguyên tố sau '+numberInput.value;
+            const n = parseInt(numberInput.value);
+            for(var i=1;i<=n;i++){
+                console.log(i);
+                if (isPrime(i)) {
+                    console.log(i);
+                    const li = document.createElement('li');
+                    li.textContent = i;
+                    result.appendChild(li);
+                }
+            }
+            numberInput.value='';
+        }
+        
     }
 </script>
