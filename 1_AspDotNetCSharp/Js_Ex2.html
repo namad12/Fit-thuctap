@@ -35,12 +35,8 @@
         const numberInput = document.getElementById('numberInput');
         const result = document.getElementById('result');
         const lb = document.getElementById('label');
-
-        // Kiểm tra xem đầu vào có phải số tự nhiên hay không
-        if (!numberInput || numberInput < 0 || !Number.isInteger(parseFloat(numberInput.value))) {
-            result.innerText = "Vui lòng nhập một số tự nhiên!";
-            return;
-        }
+        result.innerText="";
+        
         lb.innerText='Danh sách các số nguyên tố sau '+numberInput.value;
         const n = parseInt(numberInput.value);
         for(var i=1;i<=n;i++){
