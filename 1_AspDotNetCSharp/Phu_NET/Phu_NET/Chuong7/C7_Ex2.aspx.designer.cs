@@ -42,15 +42,6 @@ namespace Phu_NET.Chuong7
         protected global::System.Web.UI.WebControls.TextBox txtLowest_Sal;
 
         /// <summary>
-        /// lblLowest_Sal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLowest_Sal;
-
-        /// <summary>
         /// txtHighest_Sal control.
         /// </summary>
         /// <remarks>
@@ -58,6 +49,15 @@ namespace Phu_NET.Chuong7
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtHighest_Sal;
+
+        /// <summary>
+        /// lblLowest_Sal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLowest_Sal;
 
         /// <summary>
         /// lblHighest_sal control.

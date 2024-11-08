@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -16,7 +17,7 @@ namespace Phu_NET.Chuong7
     {
         private string strConn = ConfigurationManager.ConnectionStrings["MyDBConnection"].ConnectionString;
         private DataTable dt;
-
+        private string sGrade="";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -33,7 +34,7 @@ namespace Phu_NET.Chuong7
                 objConnection.Open();
                 OracleCommand objCommand = new OracleCommand();
                 objCommand.Connection = objConnection;
-                objCommand.CommandText = "select * from Job_Grade;";
+                objCommand.CommandText = "select * from Job_Grade ORDER BY lowest_sal";
                 objCommand.CommandType = System.Data.CommandType.Text;
                 OracleDataAdapter objAdapter = new OracleDataAdapter(objCommand);
                 DataTable objTable = new DataTable();
@@ -43,6 +44,7 @@ namespace Phu_NET.Chuong7
             }
         }
 
+        
         protected void btnLamMoi_Click(object sender, EventArgs e)
         {
             txtGrade.Text = "";
@@ -52,47 +54,38 @@ namespace Phu_NET.Chuong7
             lblLowest_Sal.Text = "";
             lblHighest_sal.Text = "";
 
-            ClearDataGrid();
+            dgJobGrades.DataSource = null;
+            dgJobGrades.DataBind();
 
             btnGhiSua.Text = "Ghi";
         }
 
-        protected void ClearDataGrid()
-        {
-            // Tạo một DataTable trống với các cột tương tự
-            DataTable emptyTable = new DataTable();
-            emptyTable.Columns.Add("grade", typeof(string));
-            emptyTable.Columns.Add("lowest_sal", typeof(decimal));
-            emptyTable.Columns.Add("highest_sal", typeof(decimal));
-            emptyTable.Columns.Add("acreateby", typeof(string));
-            emptyTable.Columns.Add("acreatedte", typeof(DateTime));
-            emptyTable.Columns.Add("amodifiedby", typeof(string));
-            emptyTable.Columns.Add("amodifieddte", typeof(DateTime));
-
-            // Thêm một dòng trống để giữ phần header
-            emptyTable.Rows.Add(emptyTable.NewRow());
-
-            // Gán DataTable trống vào DataGrid
-            dgJobGrades.DataSource = emptyTable;
-            dgJobGrades.DataBind();
-
-            dgJobGrades.Items[0].Visible = false;
-        }
-
         protected void dgJobGrades_ItemCommand(object source, DataGridCommandEventArgs e)
         {
-            txtGrade.Text = e.Item.Cells[1].Text.Replace(",", "");
+            txtGrade.Text = e.Item.Cells[1].Text.Trim();
             txtLowest_Sal.Text = e.Item.Cells[2].Text.Replace(",", "");
             txtHighest_Sal.Text = e.Item.Cells[3].Text.Replace(",", "");
+            sGrade = e.Item.Cells[1].Text.Trim();
+            ViewState["sGrade"] = sGrade;
 
             btnGhiSua.Text = "Sửa";
         }
-
+        private bool Check_Grade()
+        {
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (dr["Grade"].ToString() == txtGrade.Text)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         protected bool ValidateInput()
         {
             bool isValid = true;
-            decimal lowestSal=0;
-            decimal highestSal=0;
+            decimal lowestSal = 0;
+            decimal highestSal = 0;
             lblGrade.Text = "";
             lblLowest_Sal.Text = "";
             lblHighest_sal.Text = "";
@@ -100,6 +93,11 @@ namespace Phu_NET.Chuong7
             if (string.IsNullOrWhiteSpace(txtGrade.Text))
             {
                 lblGrade.Text = "Vui lòng nhập bậc lương.";
+                isValid = false;
+            }
+            else if (!Check_Grade())
+            {
+                lblGrade.Text = "Bậc lương đã tồn tại.";
                 isValid = false;
             }
 
@@ -138,7 +136,6 @@ namespace Phu_NET.Chuong7
                 lblHighest_sal.Text = "Mức lương cao nhất phải lớn hơn mức lương thấp nhất.";
             }
             return isValid;
-
         }
 
         protected void btnTK_Click(object sender, EventArgs e)
@@ -173,24 +170,23 @@ namespace Phu_NET.Chuong7
             {
                 return;
             }
-            else if (btnGhiSua.Text == "Sửa"){
+            else if (btnGhiSua.Text == "Sửa")
+            {
                 btnSua_Click();
             }
             else
             {
                 btnGhi_Click();
             }
-            
-
         }
         private void btnGhi_Click()
         {
             string grade = txtGrade.Text.Trim();
             decimal lowestSal = decimal.Parse(txtLowest_Sal.Text.Trim());
             decimal highestSal = decimal.Parse(txtHighest_Sal.Text.Trim());
-            string createdBy = "Phu";  
-            DateTime createdDate = DateTime.Now;  
-            string modifiedBy = null; 
+            string createdBy = "Phu";
+            DateTime createdDate = DateTime.Now;
+            string modifiedBy = null;
             DateTime? modifiedDate = null;
 
             using (OracleConnection conn = new OracleConnection(strConn))
@@ -207,7 +203,7 @@ namespace Phu_NET.Chuong7
                     cmd.Parameters.Add("p_acreateby", OracleDbType.Varchar2).Value = createdBy;
                     cmd.Parameters.Add("p_acreatedte", OracleDbType.Date).Value = createdDate;
 
-                    
+
                     cmd.Parameters.Add("p_amodifiedby", OracleDbType.Varchar2).Value = modifiedBy ?? (object)DBNull.Value;
                     cmd.Parameters.Add("p_amodifieddte", OracleDbType.Date).Value = modifiedDate ?? (object)DBNull.Value;
 
@@ -221,15 +217,13 @@ namespace Phu_NET.Chuong7
         }
         private void btnSua_Click()
         {
-            string grade = txtGrade.Text.Trim();
+            ValidateInput();
+            sGrade = ViewState["sGrade"]?.ToString() ?? "";
+            string new_grade = txtGrade.Text.Trim();
             decimal lowestSal = decimal.Parse(txtLowest_Sal.Text.Trim());
             decimal highestSal = decimal.Parse(txtHighest_Sal.Text.Trim());
             string modifiedBy = "Phu";
-            if (lowestSal >= highestSal)
-            {
-                llerror.Text = "Vui long nhập mức lương thấp nhất thấp hơn mức lương cao nhất";
-                return;
-            }
+
             using (OracleConnection conn = new OracleConnection(strConn))
             {
                 conn.Open();
@@ -238,7 +232,8 @@ namespace Phu_NET.Chuong7
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add("p_grade", OracleDbType.Varchar2).Value = grade;
+                    cmd.Parameters.Add("p_grade", OracleDbType.Varchar2).Value = sGrade;
+                    cmd.Parameters.Add("p_grade_n", OracleDbType.Varchar2).Value = new_grade;
                     cmd.Parameters.Add("p_lowest_sal", OracleDbType.Decimal).Value = lowestSal;
                     cmd.Parameters.Add("p_highest_sal", OracleDbType.Decimal).Value = highestSal;
                     cmd.Parameters.Add("p_amodifiedby", OracleDbType.Varchar2).Value = modifiedBy;

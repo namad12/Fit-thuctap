@@ -16,13 +16,19 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <center>
         <div>
-            <h3>Thiêt lập mức lương</h3>
+            <h2>Thiêt lập mức lương</h2>
 
             <table style="margin-bottom: 15px; width: 60%">
                 <tr>
                     <th>Bậc lương:  </th>
                     <td>
                         <asp:TextBox ID="txtGrade" type="text" name="bacluong" runat="server"></asp:TextBox>
+
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
                         <asp:Label ID="lblGrade" runat="server" ForeColor="Red"></asp:Label>
                     </td>
                 </tr>
@@ -30,26 +36,36 @@
                     <th>Mức lương thấp nhất:  </th>
                     <td>
                         <asp:TextBox ID="txtLowest_Sal" type="number" name="luongtn" runat="server"></asp:TextBox>
-                        <asp:Label ID="lblLowest_Sal" runat="server" ForeColor="Red"></asp:Label>
+
                     </td>
                     <th>Mức lương cao nhất:  </th>
                     <td>
                         <asp:TextBox ID="txtHighest_Sal" type="number" name="luongcn" runat="server"></asp:TextBox>
+
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <asp:Label ID="lblLowest_Sal" runat="server" ForeColor="Red"></asp:Label>
+                    </td>
+                    <th></th>
+                    <td>
                         <asp:Label ID="lblHighest_sal" runat="server" ForeColor="Red"></asp:Label>
                     </td>
                 </tr>
                 <tr>
                     <td style="text-align: center;">
-                        <asp:Button ID="btnTK" CssClass="btn" runat="server" Text="Tìm kiếm" OnClick="btnTK_Click" BorderStyle="None" />
+                        <asp:Button ID="btnTK" CssClass="btn" runat="server" Text="Tìm kiếm" OnClick="btnTK_Click" BorderStyle="None" Height="25px" Width="80px" />
                     </td>
                     <td style="text-align: center;">
-                        <asp:Button ID="btnLamMoi" CssClass="btn" runat="server" Text="Làm mới" CommandName="Reset" OnClick="btnLamMoi_Click" BorderStyle="None" />
+                        <asp:Button ID="btnLamMoi" CssClass="btn" runat="server" Text="Làm mới" CommandName="Reset" OnClick="btnLamMoi_Click" BorderStyle="None" Height="25px" Width="80px" />
                     </td>
                     <td style="text-align: center;">
-                        <asp:Button ID="btnGhiSua" CssClass="btn" runat="server" Text="Ghi" CommandName="SaveOrUpdate" OnClick="btnGhiSua_Click" BorderStyle="None" />
+                        <asp:Button ID="btnGhiSua" CssClass="btn" runat="server" Text="Ghi" CommandName="SaveOrUpdate" OnClick="btnGhiSua_Click" BorderStyle="None" Height="25px" Width="80px" />
                     </td>
                     <td style="text-align: center;">
-                        <asp:Button ID="btnExcel" CssClass="btn" runat="server" Text="Excel" CommandName="ExportToExcel" BorderStyle="None" OnClick="btnExcel_Click" />
+                        <asp:Button ID="btnExcel" CssClass="btn" runat="server" Text="Excel" CommandName="ExportToExcel" BorderStyle="None" OnClick="btnExcel_Click" Height="25px" Width="80px" />
                     </td>
                 </tr>
             </table>
@@ -72,12 +88,10 @@
                     </asp:BoundColumn>
 
                     <asp:BoundColumn HeaderText="Mức lương thấp nhất" DataField="lowest_sal" DataFormatString="{0:N0}">
-                        <HeaderStyle Width="200px" />
                         <ItemStyle HorizontalAlign="Right" BorderColor="Black" BorderWidth="1px" />
                     </asp:BoundColumn>
 
                     <asp:BoundColumn HeaderText="Mức lương cao nhất" DataField="highest_sal" DataFormatString="{0:N0}">
-                        <HeaderStyle Width="200px" />
                         <ItemStyle HorizontalAlign="Right" BorderColor="Black" BorderWidth="1px" />
                     </asp:BoundColumn>
 

@@ -1,4 +1,4 @@
-CREATE TABLE job_grades (
+CREATE TABLE job_grade (
     grade VARCHAR2(10 CHAR) NOT NULL,
     lowest_sal NUMBER(15,0) NOT NULL,
     highest_sal NUMBER(15,0) NOT NULL,
@@ -9,19 +9,19 @@ CREATE TABLE job_grades (
 );
 
 
-INSERT INTO job_grades (grade, lowest_sal, highest_sal, acreateby, acreatedte, amodifiedby, amodifieddte) 
+INSERT INTO job_grade (grade, lowest_sal, highest_sal, acreateby, acreatedte, amodifiedby, amodifieddte) 
 VALUES ('A', 30000, 50000, 'User1', TO_DATE('2024-11-01', 'YYYY-MM-DD'), 'User2', TO_DATE('2024-11-05', 'YYYY-MM-DD'));
 
-INSERT INTO job_grades (grade, lowest_sal, highest_sal, acreateby, acreatedte, amodifiedby, amodifieddte) 
+INSERT INTO job_grade (grade, lowest_sal, highest_sal, acreateby, acreatedte, amodifiedby, amodifieddte) 
 VALUES ('B', 20000, 40000, 'User3', TO_DATE('2024-11-02', 'YYYY-MM-DD'), 'User4', TO_DATE('2024-11-04', 'YYYY-MM-DD'));
 
-INSERT INTO job_grades (grade, lowest_sal, highest_sal, acreateby, acreatedte, amodifiedby, amodifieddte) 
+INSERT INTO job_grade (grade, lowest_sal, highest_sal, acreateby, acreatedte, amodifiedby, amodifieddte) 
 VALUES ('C', 15000, 30000, 'User5', TO_DATE('2024-11-03', 'YYYY-MM-DD'), 'User6', TO_DATE('2024-11-03', 'YYYY-MM-DD'));
 
-INSERT INTO job_grades (grade, lowest_sal, highest_sal, acreateby, acreatedte, amodifiedby, amodifieddte) 
+INSERT INTO job_grade (grade, lowest_sal, highest_sal, acreateby, acreatedte, amodifiedby, amodifieddte) 
 VALUES ('D', 10000, 20000, 'User7', TO_DATE('2024-11-04', 'YYYY-MM-DD'), 'User8', TO_DATE('2024-11-02', 'YYYY-MM-DD'));
 
-INSERT INTO job_grades (grade, lowest_sal, highest_sal, acreateby, acreatedte, amodifiedby, amodifieddte) 
+INSERT INTO job_grade (grade, lowest_sal, highest_sal, acreateby, acreatedte, amodifiedby, amodifieddte) 
 VALUES ('E', 5000, 15000, 'User9', TO_DATE('2024-11-05', 'YYYY-MM-DD'), 'User10', TO_DATE('2024-11-01', 'YYYY-MM-DD'));
 
 COMMIT;
@@ -83,6 +83,8 @@ VALUES (105, 'E005', 'Michael Wilson', TO_DATE('2022-07-20', 'YYYY-MM-DD'), NULL
 
 commit;
 
+select * from Job_Grade ORDER BY lowest_sal;
+
 CREATE OR REPLACE PROCEDURE getJob_Grade (
     p_grade IN Job_Grade.grade%TYPE DEFAULT NULL,
     p_lowest_sal IN Job_Grade.lowest_sal%TYPE DEFAULT NULL,
@@ -96,11 +98,13 @@ BEGIN
     FROM Job_Grade
     WHERE (grade = p_grade OR p_grade IS NULL)
           AND (lowest_sal >= p_lowest_sal OR p_lowest_sal IS NULL)
-          AND (highest_sal <= p_highest_sal OR p_highest_sal IS NULL);
+          AND (highest_sal <= p_highest_sal OR p_highest_sal IS NULL)
+    ORDER BY lowest_sal;
 END;
 
 CREATE OR REPLACE PROCEDURE upJob_Grade(
     p_grade IN Job_Grade.grade%TYPE,
+    p_grade_n IN Job_Grade.grade%TYPE,
     p_lowest_sal IN Job_Grade.lowest_sal%TYPE,
     p_highest_sal IN Job_Grade.highest_sal%TYPE,
     p_acreateby IN Job_Grade.ACREATEBY%TYPE
@@ -108,7 +112,9 @@ CREATE OR REPLACE PROCEDURE upJob_Grade(
 IS
 BEGIN
     UPDATE Job_Grade
-    SET lowest_sal=p_lowest_sal,
+    SET 
+        grade=p_grade_n,
+        lowest_sal=p_lowest_sal,
         highest_sal=p_highest_sal,
         AMODIFIEDDTE=SYSDATE,
         AMODIFIEDBY=p_acreateby
