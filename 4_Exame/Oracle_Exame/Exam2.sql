@@ -196,9 +196,10 @@ from kyhan k;
 commit;
 
 -- tạo view lãi suất mà viết sai cả cú pháp nhá, -> ẩu quá, anh nói bao lần rồi, lần sau cẩn thận những thứ mk viết nhá
+
 CREATE OR REPLACE TYPE T_ResultRecord AS OBJECT (
-    ky_han VARCHAR2(50),
-    thang_du NUMBER,
+    So_ky_han VARCHAR2(50),
+    So_thang_du NUMBER,
     so_tien NUMBER
 );
 
