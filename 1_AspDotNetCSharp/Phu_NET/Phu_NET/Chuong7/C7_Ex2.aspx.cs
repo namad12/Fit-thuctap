@@ -55,6 +55,7 @@ namespace Phu_NET.Chuong7
             lblHighest_sal.Text = "";
 
             dgJobGrades.DataSource = null;
+            dgJobGrades.SelectedIndex = 0;
             dgJobGrades.DataBind();
 
             btnGhiSua.Text = "Ghi";
@@ -95,11 +96,7 @@ namespace Phu_NET.Chuong7
                 lblGrade.Text = "Vui lòng nhập bậc lương.";
                 isValid = false;
             }
-            else if (!Check_Grade())
-            {
-                lblGrade.Text = "Bậc lương đã tồn tại.";
-                isValid = false;
-            }
+            
 
             if (string.IsNullOrWhiteSpace(txtLowest_Sal.Text))
             {
@@ -176,7 +173,16 @@ namespace Phu_NET.Chuong7
             }
             else
             {
-                btnGhi_Click();
+                if (!Check_Grade())
+                {
+                    lblGrade.Text = "Bậc lương đã tồn tại.";
+                    
+                }
+                else
+                {
+                    btnGhi_Click();
+                }
+                
             }
         }
         private void btnGhi_Click()
@@ -217,7 +223,7 @@ namespace Phu_NET.Chuong7
         }
         private void btnSua_Click()
         {
-            ValidateInput();
+            
             sGrade = ViewState["sGrade"]?.ToString() ?? "";
             string new_grade = txtGrade.Text.Trim();
             decimal lowestSal = decimal.Parse(txtLowest_Sal.Text.Trim());
