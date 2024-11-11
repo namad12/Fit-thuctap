@@ -90,15 +90,6 @@ create table Tietkiem (
 alter table tietkiem
 add constraint pk_TietK_maSo PRIMARY KEY (maSo);
 
-after table Tietkiem
-add constraint fk_TietK_makh FOREIGN KEY (makh) REFERENCES Khachhang(makh);
-
-after table Tietkiem
-add constraint fk_TietK_noigi FOREIGN KEY (noigi) REFERENCES Chinhanh(macn);
-
-after table Tietkiem
-add constraint fk_TietK_kyhan FOREIGN KEY (kyhan) REFERENCES Kyhan(maK);
-
 --> viết sai câu lệnh (alter table chứ ko phải after table) 
 -- đề bài: 1. Create tables (Khachhang, tietkiem, chinhanh, kyhạn)   
 -- with customerid, contractid, termed, bracnchcode is primery key and insert data into database.
@@ -213,50 +204,61 @@ CREATE OR REPLACE PROCEDURE TinhTongSoTienRut (
 IS
   CURSOR cr_tk IS
     SELECT t.maso, t.makh, t.noigi, t.sotien, t.kyhan, t.ngaygui, t.ngayrut,
-           t.sotiennhan, v.kyhan AS kyhan_t, v.laisuat_kh
-    FROM tietkiem t, v_kyhan_laisuatkh v 
+           t.sotiennhan, v.kyhan AS kyhan_time, v.laisuat
+    FROM tietkiem t, kyhan v
     WHERE t.makh = p_makh AND t.kyhan = v.mak;
-  
-  v_tongSoThang NUMBER;
+
+  v_tongSoNgay NUMBER;
   v_soTien NUMBER;
   v_soKyHan NUMBER;
-  v_soThangDu NUMBER;
-  
+  v_soNgayDu NUMBER;
+  v_SoNgayCuaKyHan NUMBER;
   v_results T_ResultTable := T_ResultTable();
-  
+
 BEGIN
   
-  FOR tk_record IN cr_tk LOOP 
+  FOR tk_record IN cr_tk LOOP
     -- số tháng tính từ ngày gửi đến ngày hiện tại
-    v_tongSoThang := ROUND(MONTHS_BETWEEN(SYSDATE, tk_record.ngaygui), 3);
-    
+    v_tongSoNgay := TRUNC(SYSDATE - tk_record.ngaygui);
+    v_SoNgayCuaKyHan := TO_NUMBER(REGEXP_SUBSTR(tk_record.kyhan_time, '^\d+')*30);
     -- Số lần ky han đạt được theo kỳ hạn đã đăng ký
     v_soKyHan := CASE
-                    WHEN tk_record.kyhan = 'TK0' THEN v_tongSoThang
-                    ELSE ROUND(v_tongSoThang / TO_NUMBER(REGEXP_SUBSTR(tk_record.kyhan_t, '^\d+')), 0)
+                    WHEN tk_record.kyhan = 'TK0' THEN v_tongSoNgay
+                    WHEN tk_record.kyhan = 'TK12' THEN TRUNC(v_tongSoNgay/365)
+                    WHEN tk_record.kyhan = 'TK24' THEN TRUNC(v_tongSoNgay/730)
+                    WHEN tk_record.kyhan = 'TK36' THEN TRUNC(v_tongSoNgay/1095)
+                    ELSE TRUNC(v_tongSoNgay/v_SoNgayCuaKyHan)
                   END;
-    -- Số tháng lãi chưa đạt kỳ hạn 
-    v_soThangDu := CASE
+    -- Số tháng lãi chưa đạt kỳ hạn
+    v_soNgayDu := CASE
                     WHEN tk_record.kyhan = 'TK0' THEN 0
-                    ELSE MOD(v_tongSoThang, TO_NUMBER(REGEXP_SUBSTR(tk_record.kyhan_t, '^\d+')))
+                    WHEN tk_record.kyhan = 'TK12' THEN MOD(v_tongSoNgay,365 )
+                    WHEN tk_record.kyhan = 'TK24' THEN MOD(v_tongSoNgay,730 )
+                    WHEN tk_record.kyhan = 'TK36' THEN MOD(v_tongSoNgay,1095 )
+                    ELSE MOD(v_tongSoNgay, v_SoNgayCuaKyHan)
                   END;
     --Số tiền ban đầu
     v_soTien := tk_record.sotien;
 
     -- Tính số tiền theo kỳ hạn gửi
-    FOR i IN 1..v_soKyHan LOOP
-      v_soTien := v_soTien * (1 + tk_record.laisuat_kh / 100);
-    END LOOP; 
-
-    -- Tính số tiền theo lãi suất TK0 cho số tháng dư
-    v_soTien := ROUND(v_soTien * (1 + (tk_record.laisuat_kh / 100) * v_soThangDu), 0);
+    v_soTien :=CASE
+                WHEN tk_record.kyhan = 'TK0' THEN v_soTien*(1+(0.003/365)*v_soKyHan)
+                WHEN tk_record.kyhan = 'TK12' THEN v_soTien*POWER(1+tk_record.laisuat/100,v_soKyHan)
+                WHEN tk_record.kyhan = 'TK24' THEN v_soTien*POWER(1+tk_record.laisuat/100,v_soKyHan)
+                WHEN tk_record.kyhan = 'TK36' THEN v_soTien*POWER(1+tk_record.laisuat/100,v_soKyHan)
+                ELSE v_soTien*POWER(1+tk_record.laisuat/100/365*v_SoNgayCuaKyHan,v_soKyHan)
+              END;
     
+    
+    -- Tính số tiền theo lãi suất TK0 cho số tháng dư
+    v_soTien := ROUND(v_soTien * (1 + (0.003/365) * v_soNgayDu), 0);
+
     -- Thêm kết quả vào bảng v_results
         v_results.EXTEND;
-        v_results(v_results.COUNT) := T_ResultRecord('Kỳ hạn: ' || v_soKyHan, v_soThangDu, v_soTien);
-    
+        v_results(v_results.COUNT) := T_ResultRecord('Kỳ hạn: ' || v_soKyHan, v_soNgayDu, v_soTien);
+
   END LOOP;
-  
+  -- Mở con trỏ SYS_REFCURSOR để trả về kết quả từ v_results
   OPEN p_results FOR
   SELECT r.ky_han, r.thang_du, r.so_tien
   FROM TABLE(v_results) r;
