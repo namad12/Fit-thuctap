@@ -1,12 +1,139 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\PhamAnhPhu_Fit\\4_Exame\\AspDotNet_Exame\\Asp_Net_Ex\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F2F35988-1921-41D6-9451-BC79591C5DC7}|Asp_Net_Ex\\Asp_Net_Ex.csproj|d:\\phamanhphu_fit\\4_exame\\aspdotnet_exame\\asp_net_ex\\asp_net_ex\\exam1.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2F35988-1921-41D6-9451-BC79591C5DC7}|Asp_Net_Ex\\Asp_Net_Ex.csproj|solutionrelative:asp_net_ex\\exam1.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2F35988-1921-41D6-9451-BC79591C5DC7}|Asp_Net_Ex\\Asp_Net_Ex.csproj|d:\\phamanhphu_fit\\4_exame\\aspdotnet_exame\\asp_net_ex\\asp_net_ex\\exam1.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{F2F35988-1921-41D6-9451-BC79591C5DC7}|Asp_Net_Ex\\Asp_Net_Ex.csproj|solutionrelative:asp_net_ex\\exam1.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2F35988-1921-41D6-9451-BC79591C5DC7}|Asp_Net_Ex\\Asp_Net_Ex.csproj|d:\\phamanhphu_fit\\4_exame\\aspdotnet_exame\\asp_net_ex\\asp_net_ex\\exam3.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{F2F35988-1921-41D6-9451-BC79591C5DC7}|Asp_Net_Ex\\Asp_Net_Ex.csproj|solutionrelative:asp_net_ex\\exam3.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2F35988-1921-41D6-9451-BC79591C5DC7}|Asp_Net_Ex\\Asp_Net_Ex.csproj|d:\\phamanhphu_fit\\4_exame\\aspdotnet_exame\\asp_net_ex\\asp_net_ex\\exam3.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2F35988-1921-41D6-9451-BC79591C5DC7}|Asp_Net_Ex\\Asp_Net_Ex.csproj|solutionrelative:asp_net_ex\\exam3.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2F35988-1921-41D6-9451-BC79591C5DC7}|Asp_Net_Ex\\Asp_Net_Ex.csproj|d:\\phamanhphu_fit\\4_exame\\aspdotnet_exame\\asp_net_ex\\asp_net_ex\\exam2.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{F2F35988-1921-41D6-9451-BC79591C5DC7}|Asp_Net_Ex\\Asp_Net_Ex.csproj|solutionrelative:asp_net_ex\\exam2.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2F35988-1921-41D6-9451-BC79591C5DC7}|Asp_Net_Ex\\Asp_Net_Ex.csproj|d:\\phamanhphu_fit\\4_exame\\aspdotnet_exame\\asp_net_ex\\asp_net_ex\\exam2.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2F35988-1921-41D6-9451-BC79591C5DC7}|Asp_Net_Ex\\Asp_Net_Ex.csproj|solutionrelative:asp_net_ex\\exam2.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2F35988-1921-41D6-9451-BC79591C5DC7}|Asp_Net_Ex\\Asp_Net_Ex.csproj|d:\\phamanhphu_fit\\4_exame\\aspdotnet_exame\\asp_net_ex\\asp_net_ex\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{F2F35988-1921-41D6-9451-BC79591C5DC7}|Asp_Net_Ex\\Asp_Net_Ex.csproj|solutionrelative:asp_net_ex\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Exam3.aspx.cs",
+              "DocumentMoniker": "D:\\PhamAnhPhu_Fit\\4_Exame\\AspDotNet_Exame\\Asp_Net_Ex\\Asp_Net_Ex\\Exam3.aspx.cs",
+              "RelativeDocumentMoniker": "Asp_Net_Ex\\Exam3.aspx.cs",
+              "ToolTip": "D:\\PhamAnhPhu_Fit\\4_Exame\\AspDotNet_Exame\\Asp_Net_Ex\\Asp_Net_Ex\\Exam3.aspx.cs",
+              "RelativeToolTip": "Asp_Net_Ex\\Exam3.aspx.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAKkAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T02:48:41.523Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Exam3.aspx",
+              "DocumentMoniker": "D:\\PhamAnhPhu_Fit\\4_Exame\\AspDotNet_Exame\\Asp_Net_Ex\\Asp_Net_Ex\\Exam3.aspx",
+              "RelativeDocumentMoniker": "Asp_Net_Ex\\Exam3.aspx",
+              "ToolTip": "D:\\PhamAnhPhu_Fit\\4_Exame\\AspDotNet_Exame\\Asp_Net_Ex\\Asp_Net_Ex\\Exam3.aspx",
+              "RelativeToolTip": "Asp_Net_Ex\\Exam3.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-11-12T02:46:33.682Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Exam2.aspx.cs",
+              "DocumentMoniker": "D:\\PhamAnhPhu_Fit\\4_Exame\\AspDotNet_Exame\\Asp_Net_Ex\\Asp_Net_Ex\\Exam2.aspx.cs",
+              "RelativeDocumentMoniker": "Asp_Net_Ex\\Exam2.aspx.cs",
+              "ToolTip": "D:\\PhamAnhPhu_Fit\\4_Exame\\AspDotNet_Exame\\Asp_Net_Ex\\Asp_Net_Ex\\Exam2.aspx.cs",
+              "RelativeToolTip": "Asp_Net_Ex\\Exam2.aspx.cs",
+              "ViewState": "AQIAAGsBAAAAAAAAAAAcwIgBAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T02:43:58.204Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Exam2.aspx",
+              "DocumentMoniker": "D:\\PhamAnhPhu_Fit\\4_Exame\\AspDotNet_Exame\\Asp_Net_Ex\\Asp_Net_Ex\\Exam2.aspx",
+              "RelativeDocumentMoniker": "Asp_Net_Ex\\Exam2.aspx",
+              "ToolTip": "D:\\PhamAnhPhu_Fit\\4_Exame\\AspDotNet_Exame\\Asp_Net_Ex\\Asp_Net_Ex\\Exam2.aspx",
+              "RelativeToolTip": "Asp_Net_Ex\\Exam2.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-11-12T02:42:34.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Web.config",
+              "DocumentMoniker": "D:\\PhamAnhPhu_Fit\\4_Exame\\AspDotNet_Exame\\Asp_Net_Ex\\Asp_Net_Ex\\Web.config",
+              "RelativeDocumentMoniker": "Asp_Net_Ex\\Web.config",
+              "ToolTip": "D:\\PhamAnhPhu_Fit\\4_Exame\\AspDotNet_Exame\\Asp_Net_Ex\\Asp_Net_Ex\\Web.config",
+              "RelativeToolTip": "Asp_Net_Ex\\Web.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-11-12T02:35:00.812Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Exam1.aspx.cs",
+              "DocumentMoniker": "D:\\PhamAnhPhu_Fit\\4_Exame\\AspDotNet_Exame\\Asp_Net_Ex\\Asp_Net_Ex\\Exam1.aspx.cs",
+              "RelativeDocumentMoniker": "Asp_Net_Ex\\Exam1.aspx.cs",
+              "ToolTip": "D:\\PhamAnhPhu_Fit\\4_Exame\\AspDotNet_Exame\\Asp_Net_Ex\\Asp_Net_Ex\\Exam1.aspx.cs",
+              "RelativeToolTip": "Asp_Net_Ex\\Exam1.aspx.cs",
+              "ViewState": "AQIAAOwAAAAAAAAAAAAcwPYAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T02:23:49.106Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Exam1.aspx",
+              "DocumentMoniker": "D:\\PhamAnhPhu_Fit\\4_Exame\\AspDotNet_Exame\\Asp_Net_Ex\\Asp_Net_Ex\\Exam1.aspx",
+              "RelativeDocumentMoniker": "Asp_Net_Ex\\Exam1.aspx",
+              "ToolTip": "D:\\PhamAnhPhu_Fit\\4_Exame\\AspDotNet_Exame\\Asp_Net_Ex\\Asp_Net_Ex\\Exam1.aspx",
+              "RelativeToolTip": "Asp_Net_Ex\\Exam1.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-11-12T02:23:35.764Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
