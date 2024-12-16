@@ -302,6 +302,7 @@ namespace Exam1
 
         protected void btnTK_Click(object sender, EventArgs e)
         {
+            lblError.Text = "";
 
             if (string.IsNullOrEmpty(txtAclientcode.Text))
             {
@@ -371,10 +372,31 @@ namespace Exam1
                 {
                     for (int j = 0; j < dt.Columns.Count; j++)
                     {
-                        workSheet.Cells[i + 2, j + 1].Value = dt.Rows[i][j];
+                        var cell = workSheet.Cells[i + 2, j + 1];
+                        var value = dt.Rows[i][j];
+
+                        if (value is DateTime)
+                        {
+                            // Áp dụng giá trị ngày giờ
+                            cell.Value = (DateTime)value;
+
+                            // Định dạng ngày giờ trong Excel
+                            cell.Style.Numberformat.Format = "DD-MMM-YYYY";
+                        }
+                        else if (value is decimal || value is double)
+                        {
+                            // Áp dụng định dạng cho số
+                            cell.Value = value;
+                            cell.Style.Numberformat.Format = "#,##0.00";
+                        }
+                        else
+                        {
+                            cell.Value = value.ToString();
+                        }
                     }
                 }
-
+                // Tự động điều chỉnh kích thước cột
+                workSheet.Cells[workSheet.Dimension.Address].AutoFitColumns();
                 // Thiết lập định dạng cho file xuất
                 using (var memoryStream = new MemoryStream())
                 {

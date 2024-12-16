@@ -19,7 +19,7 @@ PROCEDURE add_employee(
 ) 
 IS
 BEGIN
-   -- Th?c hi?n chèn d? li?u vào b?ng Employees
+   -- Thuc hien chèn dữ liệu vào bảng Employees
    INSERT INTO employee (
       employee_id, first_name, last_name, email, phone_number, hire_date, job_id, salary, commission_pct, manager_id, department_id
    ) VALUES (
@@ -44,7 +44,7 @@ END add_employee;
 
 --> xem lại các thay đổi anh đã sửa nhá
 
--- b
+-- b đã sửa
 CREATE OR REPLACE PROCEDURE up_employee_phone(
    p_employee_id   IN employees.employee_id%TYPE,
    p_phone_number  IN employees.phone_number%TYPE ,
@@ -56,46 +56,57 @@ BEGIN
    SET phone_number = p_phone_number
    WHERE employee_id = p_employee_id;
    IF SQL%ROWCOUNT > 0 THEN
-      p_message := 'Phone number updated successfully for employee ID ' || p_employee_id;
+      p_message := 'Phone number updated successfully for employee ID ' || TO_CHAR( p_employee_id);
    ELSE
-      p_message := 'No employee found with ID ' || p_employee_id;
+      p_message := 'No employee found with ID ' || TO_CHAR( p_employee_id);
+   
    END IF;
+   EXCEPTION 
+    WHEN OTHERS THEN
+        p_message := 'Insert operation failed: ' || SQLERRM;
+        ROLLBACK;
 END;
 
 --> không có exception
 --> còn lại thì ok
 --> xem lại câu a) anh sửa cho em nhé
 
--- c
-PROCEDURE add_department(
+-- c đã sửa
+CREATE OR REPLACE PROCEDURE add_department(
    p_department_id   IN department.department_id%TYPE,
    p_department_name IN department.department_name%TYPE,
    p_manager_id      IN department.manager_id%TYPE,
-   p_location_id     IN department.location_id%TYPE
+   p_location_id     IN department.location_id%TYPE,
+   p_message      OUT VARCHAR2
 ) IS
 BEGIN
-   -- Chèn d? li?u vào b?ng departments
+   -- Chèn dữ liệu vào bảng departments
    INSERT INTO department 
    VALUES (p_department_id, p_department_name, p_manager_id, p_location_id);
 
-   -- Hi?n th? thông báo n?u chèn thành công
+   -- Hiện thông thông báo nếu chèn thành công
    IF SQL%ROWCOUNT > 0 THEN
-      DBMS_OUTPUT.PUT_LINE('Department inserted successfully: ' || p_department_name);
+       p_message :='Department inserted successfully: ' || p_department_name;
    ELSE
-      DBMS_OUTPUT.PUT_LINE('Failed');
+        p_message :='failed';
    END IF;
+   EXCEPTION -- Bắt lỗi nếu có sự cố trong quá trình chèn
+    WHEN OTHERS THEN
+        p_message := 'Insert operation failed: ' || SQLERRM;
+        ROLLBACK;
 END;
 
 --> tương tự câu a) anh đã sửa
 -- thiếu paramter output của sp
 -- thiếu bắt exception 
 
---d
-PROCEDURE up_department(
+--d đã sửa
+CREATE OR REPLACE PROCEDURE up_department(
     p_department_id   IN department.department_id%TYPE,
     p_department_name IN department.department_name%TYPE,
     p_manager_id      IN department.manager_id%TYPE,
-    p_location_id     IN department.location_id%TYPE
+    p_location_id     IN department.location_id%TYPE,
+    p_message      OUT VARCHAR2
 )
 IS 
 BEGIN 
@@ -105,42 +116,58 @@ BEGIN
         location_id = p_location_id
     WHERE department_id = p_department_id;
     IF SQL%ROWCOUNT > 0 THEN
-      DBMS_OUTPUT.PUT_LINE('Department updated successfully: ' || p_department_name);
+        p_message :='Department updated successfully: ' || TO_CHAR( p_department_name);
    ELSE
-      DBMS_OUTPUT.PUT_LINE('failed');
+        p_message :='failed';
    END IF;
+   EXCEPTION -- Bắt lỗi nếu có sự cố trong quá trình chèn
+    WHEN OTHERS THEN
+        p_message := 'Insert operation failed: ' || SQLERRM;
+        ROLLBACK;
 END;
 --> tương tự bị các lỗi sai như các câu phía trên
 
---e
-PROCEDURE add_job_grades(
+--e đã sửa
+CREATE OR REPLACE PROCEDURE add_job_grades(
     p_grades job_grades.grade%TYPE,
     p_lowest_sal job_grades.lowest_sal%TYPE,
-    p_highest_sal job_grades.highest_sal%TYPE
+    p_highest_sal job_grades.highest_sal%TYPE,
+    p_message      OUT VARCHAR2
 ) 
 IS 
 BEGIN 
     INSERT INTO job_grades
     VALUES (p_grades,p_lowest_sal,p_highest_sal);
     IF SQL%ROWCOUNT > 0 THEN
-      DBMS_OUTPUT.PUT_LINE('Job_grades insert successfully: ' || p_grades);
+       p_message :='Job_grades insert successfully: ' || p_grades;
    ELSE
-      DBMS_OUTPUT.PUT_LINE('failed');
+       p_message :='failed';
    END IF;
+    EXCEPTION -- Bắt lỗi nếu có sự cố trong quá trình chèn
+    WHEN OTHERS THEN
+        p_message := 'Insert operation failed: ' || SQLERRM;
+        ROLLBACK;
 END;
 --> tương tự bị các lỗi sai như các câu phía trên
 
---f
-PROCEDURE del_Job_grades(p_grade job_grades.grade%TYPE)
+--f đã sửa
+CREATE OR REPLACE PROCEDURE del_Job_grades(
+    p_grade     IN job_grades.grade%TYPE,
+    p_message   OUT VARCHAR2
+    )
 IS 
 BEGIN
     DELETE FROM job_grades
     WHERE grade = p_grade;
     IF SQL%ROWCOUNT > 0 THEN
-      DBMS_OUTPUT.PUT_LINE('Job_grades delete successfully: ' || p_grade);
+       p_message :='Job_grades delete successfully: ' || p_grade;
     ELSE
-      DBMS_OUTPUT.PUT_LINE('failed');
+       p_message :='failed';
     END IF;
+    EXCEPTION -- Bắt lỗi nếu có sự cố trong quá trình chèn
+    WHEN OTHERS THEN
+        p_message := 'Insert operation failed: ' || SQLERRM;
+        ROLLBACK;
 END;
 --> tương tự bị các lỗi sai như các câu phía trên
 

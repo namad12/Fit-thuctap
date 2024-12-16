@@ -18,7 +18,7 @@ FROM employee;
 
 --b true
 SELECT last_name, job_id, salary AS Sal
-FROM employees;
+FROM employee;
 --> OK
 
 --c
@@ -63,10 +63,10 @@ JOIN
 
 --g
 SELECT e.last_name,e.hire_date
-FROM myschema.employee e
-WHERE e.hire_date > (SELECT e.hire_date
-                     FRom myschema.employee e
-                     WHERE  e.last_name = 'Davies' );
+FROM employee e
+WHERE e.hire_date > (SELECT i.hire_date
+                     FRom employee i
+                     WHERE  i.last_name = 'Davies' );
                      
 --> ko nên để cùng tên viết tắt của bảng trong query với sub query giống nhau đều là e nhá
 
@@ -78,8 +78,11 @@ WHERE e.hire_date < d.hire_date;
 
 --> ok
 
---i
-
+--i - em bổ sung câu i
+SELECT employee_id, last_name, salary
+FROM employee
+WHERE salary > (SELECT AVG(salary) FROM employee)
+ORDER BY salary ASC;
 --> câu i không làm à
 
 --j
@@ -93,24 +96,38 @@ WHERE e.department_id IN (
 
 --> ok
 
---
-SELECT employee_id, last_name, salary
-FROM employee
-WHERE salary > (SELECT AVG(salary) FROM employee)
-ORDER BY salary ASC;
---
+--k
 SELECT last_name, salary
 FROM employee
 WHERE manager_id = 100; 
 
---
+--l
 SELECT e.department_id,e.last_name,e.job_id
 FROM employee e JOIN department d ON e.department_id=d.department_id
 WHERE d.department_name='Executive';
 
---
+--m
 SELECT  e.last_name,d.department_id,d.department_name
 FROM    employee e FULL JOIN department d ON e.department_id=d.department_id
 
+--n
+CREATE TABLE My_Employee
+AS
+SELECT *
+FROM employee
+WHERE 1=0;
 
---> điền các câu em làm vào trước rồi anh review nốt, không thì anh ko biết nó là câu nào
+INSERT INTO My_Employee 
+VALUES (207, 'TEST', 'TEST', 'TEST', '084.123.4567', TO_DATE('17-06-1987', 'DD-MM-YYYY'), 'IT_PROG', 24000, NULL, NULL, 60);
+
+UPDATE my_employee
+SET last_name ='Phu' 
+WHERE employee_id=207;
+
+SELECT * FROM my_employee;
+
+DELETE FROM my_employee
+WHERE employee_id=207;
+
+COMMIT;
+

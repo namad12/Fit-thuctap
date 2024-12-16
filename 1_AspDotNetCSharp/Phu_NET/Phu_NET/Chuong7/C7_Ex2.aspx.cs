@@ -17,17 +17,17 @@ namespace Phu_NET.Chuong7
     {
         private string strConn = ConfigurationManager.ConnectionStrings["MyDBConnection"].ConnectionString;
         private DataTable dt;
-        private string sGrade="";
+        private string sGrade = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                dgJobGrades.DataSource = getData();
+                dgJobGrades.DataSource = getAllData();
                 dgJobGrades.DataBind();
+                dt = getAllData();
             }
-            dt = getData();
         }
-        private DataTable getData()
+        private DataTable getAllData()
         {
             using (OracleConnection objConnection = new OracleConnection(strConn))
             {
@@ -44,7 +44,30 @@ namespace Phu_NET.Chuong7
             }
         }
 
-        
+        private DataTable getData()
+        {
+            using (OracleConnection conn = new OracleConnection(strConn))
+            {
+                OracleCommand cmd = new OracleCommand("getJob_Grade", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("p_grade", OracleDbType.Varchar2).Value = string.IsNullOrEmpty(txtGrade.Text) ? (object)DBNull.Value : txtGrade.Text;
+                cmd.Parameters.Add("p_lowest_sal", OracleDbType.Decimal).Value = string.IsNullOrEmpty(txtLowest_Sal.Text) ? (object)DBNull.Value : Convert.ToDecimal(txtLowest_Sal.Text);
+                cmd.Parameters.Add("p_highest_sal", OracleDbType.Decimal).Value = string.IsNullOrEmpty(txtHighest_Sal.Text) ? (object)DBNull.Value : Convert.ToDecimal(txtHighest_Sal.Text);
+
+                cmd.Parameters.Add("p_cursor", OracleDbType.RefCursor).Direction = ParameterDirection.Output;
+
+                conn.Open();
+
+                using (OracleDataReader reader = cmd.ExecuteReader())
+                {
+                    DataTable dataT = new DataTable();
+                    dataT.Load(reader);
+                    return dataT;
+                }
+            }
+        }
+
         protected void btnLamMoi_Click(object sender, EventArgs e)
         {
             txtGrade.Text = "";
@@ -68,7 +91,6 @@ namespace Phu_NET.Chuong7
             txtHighest_Sal.Text = e.Item.Cells[3].Text.Replace(",", "");
             sGrade = e.Item.Cells[1].Text.Trim();
             ViewState["sGrade"] = sGrade;
-
             btnGhiSua.Text = "Sửa";
         }
         private bool Check_Grade()
@@ -96,7 +118,7 @@ namespace Phu_NET.Chuong7
                 lblGrade.Text = "Vui lòng nhập bậc lương.";
                 isValid = false;
             }
-            
+
 
             if (string.IsNullOrWhiteSpace(txtLowest_Sal.Text))
             {
@@ -176,13 +198,13 @@ namespace Phu_NET.Chuong7
                 if (!Check_Grade())
                 {
                     lblGrade.Text = "Bậc lương đã tồn tại.";
-                    
+
                 }
                 else
                 {
                     btnGhi_Click();
                 }
-                
+
             }
         }
         private void btnGhi_Click()
@@ -216,14 +238,12 @@ namespace Phu_NET.Chuong7
                     cmd.ExecuteNonQuery();
                 }
             }
-
-            dt = getData();
-            dgJobGrades.DataSource = dt;
+            dgJobGrades.DataSource = getAllData();
             dgJobGrades.DataBind();
         }
         private void btnSua_Click()
         {
-            
+
             sGrade = ViewState["sGrade"]?.ToString() ?? "";
             string new_grade = txtGrade.Text.Trim();
             decimal lowestSal = decimal.Parse(txtLowest_Sal.Text.Trim());
@@ -247,8 +267,7 @@ namespace Phu_NET.Chuong7
                     cmd.ExecuteNonQuery();
                 }
             }
-            dt = getData();
-            dgJobGrades.DataSource = getData();
+            dgJobGrades.DataSource = getAllData();
             dgJobGrades.DataBind();
         }
         public void ExportToExcel(DataTable dt, string fileName)
@@ -268,10 +287,26 @@ namespace Phu_NET.Chuong7
                 {
                     for (int j = 0; j < dt.Columns.Count; j++)
                     {
-                        workSheet.Cells[i + 2, j + 1].Value = dt.Rows[i][j];
+                        var cell = workSheet.Cells[i + 2, j + 1];
+                        var value = dt.Rows[i][j];
+                        if (value is DateTime)
+                        {
+                            cell.Value = (DateTime)value;
+                            cell.Style.Numberformat.Format = "DD-MMM-YYYY";
+                        }
+                        else if (value is decimal || value is double)
+                        {
+                            cell.Value = value;
+                            cell.Style.Numberformat.Format = "#,##0.00";
+                        }
+                        else
+                        {
+                            cell.Value = value.ToString();
+                        }
                     }
                 }
-
+                // Tự động điều chỉnh kích thước cột
+                workSheet.Cells[workSheet.Dimension.Address].AutoFitColumns();
                 // Thiết lập định dạng cho file xuất
                 using (var memoryStream = new MemoryStream())
                 {
@@ -290,7 +325,7 @@ namespace Phu_NET.Chuong7
         }
         protected void btnExcel_Click(object sender, EventArgs e)
         {
-            ExportToExcel(dt, "Job_Grade");
+            ExportToExcel(getData(), "Job_Grade");
         }
     }
 }

@@ -47,17 +47,17 @@
                                 </asp:DropDownList>
                             </td>
                         </tr>
-                        <tr>
+                        <tr style="align-items:center">
                             <td>
-                                <asp:Button ID="btnTK" runat="server" Text="Tìm kiếm" OnClick="btnTK_Click" BackColor="#ED7D31" BorderStyle="None" ForeColor="White" />
+                                <asp:Button ID="btnTK" runat="server" Text="Tìm kiếm" OnClick="btnTK_Click" BackColor="#ED7D31" BorderStyle="None" ForeColor="White" Height="25px" Width="80px" />
                             </td>
                             <td></td>
                             <td>
-                                <asp:Button ID="btnLamMoi" runat="server" Text="Làm mới" CommandName="Reset" OnClick="btnLamMoi_Click" BackColor="#ED7D31" BorderStyle="None" ForeColor="White" />
+                                <asp:Button ID="btnLamMoi" runat="server" Text="Làm mới" CommandName="Reset" OnClick="btnLamMoi_Click" BackColor="#ED7D31" BorderStyle="None" ForeColor="White" Height="25px" Width="80px" />
                             </td>
                             <td></td>
                             <td>
-                                <asp:Button ID="btnExcel" runat="server" Text="Excel" CommandName="ExportToExcel" OnClick="btnExcel_Click" BackColor="#ED7D31" BorderStyle="None" ForeColor="White" />
+                                <asp:Button ID="btnExcel" runat="server" Text="Excel" CommandName="ExportToExcel" OnClick="btnExcel_Click" BackColor="#ED7D31" BorderStyle="None" ForeColor="White" Height="25px" Width="80px"/>
                             </td>
                         </tr>
                     </table>
