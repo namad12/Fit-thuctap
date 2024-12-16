@@ -97,6 +97,7 @@ namespace Exam1
 
                 if (e.Item.Cells[4].Text == "Chờ duyệt")
                 {
+                    btnGhiDuyet.Enabled = true;
                     btnGhiDuyet.Text = "Duyệt";
                 }
                 else
@@ -156,7 +157,6 @@ namespace Exam1
         protected void btnTK_Click(object sender, EventArgs e)
         {
             string feepositionStr = Regex.Replace(txtFeeposition.Text, "[^a-zA-Z0-9]", "");
-
 
             object feeposition = string.IsNullOrEmpty(feepositionStr) ? DBNull.Value : (object)int.Parse(feepositionStr);
 
@@ -231,8 +231,6 @@ namespace Exam1
             {
                 feeposition = (object)int.Parse(feepositionStr);
             }
-
-
             DateTime activedDate;
             if (DateTime.TryParse(txtActivedte.Text, out activedDate))
             {
